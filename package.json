@@ -12,10 +12,7 @@
     "lint": "eslint --ext .ts,.tsx ."
   },
   "keywords": [],
-  "author": {
-    "name": "ROG",
-    "email": "luan.roger.2003@gmail.com"
-  },
+  "author": "ROG <luan.roger.2003@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",
@@ -40,8 +37,13 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
+    "lucide-react": "^0.309.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
