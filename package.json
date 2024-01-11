@@ -1,8 +1,8 @@
 {
-  "name": "electron-test",
-  "productName": "electron-test",
+  "name": "electron-shadcn",
+  "productName": "electron-shadcn Template",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
