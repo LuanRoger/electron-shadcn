@@ -125,4 +125,8 @@
   body {
     @apply bg-background text-foreground overflow-hidden;
   }
+  .draglayer {
+    @apply bg-background bg-red-50;
+    -webkit-app-region: drag;
+  }
 }
