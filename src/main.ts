@@ -12,6 +12,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    titleBarStyle: "hidden",
   });
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -25,7 +26,7 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
-app.on("ready", createWindow);
+app.whenReady().then(createWindow);
 
 //osX only
 app.on("window-all-closed", () => {
@@ -39,3 +40,4 @@ app.on("activate", () => {
     createWindow();
   }
 });
+//osX only ends
