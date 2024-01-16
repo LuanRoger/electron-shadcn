@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
+import { ipcMain } from "electron";
 
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -10,9 +11,24 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, "preload.js"),
     },
     titleBarStyle: "hidden",
+  });
+  ipcMain.on("winMinimize", () => {
+    mainWindow.minimize();
+  });
+  ipcMain.on("winMaximize", () => {
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize();
+    } else {
+      mainWindow.maximize();
+    }
+  });
+  ipcMain.on("winClose", () => {
+    mainWindow.close();
   });
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
@@ -22,8 +38,6 @@ const createWindow = () => {
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
-
-  mainWindow.webContents.openDevTools();
 };
 
 app.whenReady().then(createWindow);
