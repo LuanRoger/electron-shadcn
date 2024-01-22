@@ -126,7 +126,7 @@
     @apply bg-background text-foreground overflow-hidden;
   }
   .draglayer {
-    @apply bg-background bg-red-50;
+    @apply bg-background;
     -webkit-app-region: drag;
   }
 }
