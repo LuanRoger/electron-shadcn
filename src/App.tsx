@@ -4,11 +4,11 @@ import HomePage from "./pages/HomePage";
 import BaseLayout from "./layouts/BaseLayout";
 
 export default function App() {
-  return (
-    <BaseLayout>
-      <HomePage />
-    </BaseLayout>
-  );
+    return (
+        <BaseLayout>
+            <HomePage />
+        </BaseLayout>
+    );
 }
 
 const root = createRoot(document.getElementById("app"));
