@@ -1,5 +1,5 @@
 import React from "react";
-import ToggleTheme from "../components/ToggleTheme";
+import ToggleTheme from "@/components/ToggleTheme";
 
 export default function HomePage() {
   return (
