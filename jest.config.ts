@@ -1,8 +1,3 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https:
- */
-
 import type { Config } from "jest";
 
 const config: Config = {
@@ -18,9 +13,9 @@ const config: Config = {
         "^@/(.*)$": "<rootDir>/src/$1",
     },
 
-    roots: ["<rootDir>", "<rootDir>/src"],
+    roots: ["<rootDir>/src/tests/unit"],
 
-    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"],
+    setupFilesAfterEnv: ["<rootDir>/src/tests/unit/setup.ts"],
 
     testEnvironment: "jsdom",
 
