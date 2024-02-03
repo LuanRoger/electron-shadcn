@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from "electron";
+import { addWindowEventListeners } from "./helpers/ipc/ipc-helpers";
 import path from "path";
-import { ipcMain } from "electron";
 
 if (require("electron-squirrel-startup")) {
     app.quit();
@@ -17,19 +17,7 @@ const createWindow = () => {
         },
         titleBarStyle: "hidden",
     });
-    ipcMain.on("winMinimize", () => {
-        mainWindow.minimize();
-    });
-    ipcMain.on("winMaximize", () => {
-        if (mainWindow.isMaximized()) {
-            mainWindow.unmaximize();
-        } else {
-            mainWindow.maximize();
-        }
-    });
-    ipcMain.on("winClose", () => {
-        mainWindow.close();
-    });
+    addWindowEventListeners(mainWindow);
 
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
         mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);

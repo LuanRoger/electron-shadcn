@@ -1,3 +1,4 @@
+import { closeWindow, maximizeWindow, minimizeWindow } from "@/helpers/ipc/ipc-emiters";
 import React, { ReactNode } from "react";
 
 interface DragWindowRegionProps {
@@ -5,28 +6,15 @@ interface DragWindowRegionProps {
 }
 
 export default function DragWindowRegion({ title }: DragWindowRegionProps) {
-    function minimize() {
-        const { ipcRenderer } = window.require("electron");
-        ipcRenderer.send("winMinimize");
-    }
-    function maximize() {
-        const { ipcRenderer } = window.require("electron");
-        ipcRenderer.send("winMaximize");
-    }
-    function close() {
-        const { ipcRenderer } = window.require("electron");
-        ipcRenderer.send("winClose");
-    }
-
     return (
         <div id="drag-window-region" className="flex w-screen flex-row-reverse items-stretch">
             <div className="flex">
-                <button title="Minimize" className="p-2 hover:bg-slate-300" onClick={minimize}>
+                <button title="Minimize" className="p-2 hover:bg-slate-300" onClick={minimizeWindow}>
                     <svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12">
                         <rect fill="currentColor" width="10" height="1" x="1" y="6"></rect>
                     </svg>
                 </button>
-                <button title="Maximize" className="p-2 hover:bg-slate-300" onClick={maximize}>
+                <button title="Maximize" className="p-2 hover:bg-slate-300" onClick={maximizeWindow}>
                     <svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12">
                         <rect
                             width="9"
@@ -42,7 +30,7 @@ export default function DragWindowRegion({ title }: DragWindowRegionProps) {
                     type="button"
                     title="Close"
                     className="p-2 hover:bg-red-300"
-                    onClick={close}
+                    onClick={closeWindow}
                 >
                     <svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12">
                         <polygon
