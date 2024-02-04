@@ -1,15 +1,12 @@
 import { Moon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { updateDocumentTheme } from "@/helpers/theme_helpers";
 
 export default function ToggleTheme() {
-    function toggleTheme() {
-        const isDarkMode = document.documentElement.classList.contains("dark");
-        if (isDarkMode) {
-            document.documentElement.classList.remove("dark");
-        } else {
-            document.documentElement.classList.add("dark");
-        }
+    async function toggleTheme() {
+        const isDarkMode = await window.themeMode.toggle();
+        updateDocumentTheme(isDarkMode);
     }
 
     return (
