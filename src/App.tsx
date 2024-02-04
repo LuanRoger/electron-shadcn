@@ -6,8 +6,8 @@ import { setThemeToDefault } from "./helpers/theme_helpers";
 
 export default function App() {
     useEffect(() => {
-        setThemeToDefault()
-    }, [])
+        setThemeToDefault();
+    }, []);
 
     return (
         <BaseLayout>

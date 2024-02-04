@@ -9,12 +9,22 @@ export default function DragWindowRegion({ title }: DragWindowRegionProps) {
     return (
         <div id="drag-window-region" className="flex w-screen flex-row-reverse items-stretch">
             <div className="flex">
-                <button title="Minimize" type="button" className="p-2 hover:bg-slate-300" onClick={minimizeWindow}>
+                <button
+                    title="Minimize"
+                    type="button"
+                    className="p-2 hover:bg-slate-300"
+                    onClick={minimizeWindow}
+                >
                     <svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12">
                         <rect fill="currentColor" width="10" height="1" x="1" y="6"></rect>
                     </svg>
                 </button>
-                <button title="Maximize" type="button" className="p-2 hover:bg-slate-300" onClick={maximizeWindow}>
+                <button
+                    title="Maximize"
+                    type="button"
+                    className="p-2 hover:bg-slate-300"
+                    onClick={maximizeWindow}
+                >
                     <svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12">
                         <rect
                             width="9"

@@ -5,12 +5,12 @@ import { MakerRpm } from "@electron-forge/maker-rpm";
 import { VitePlugin } from "@electron-forge/plugin-vite";
 
 const config: ForgeConfig = {
-    packagerConfig: {},
+    packagerConfig: {
+        executableName: "template",
+    },
     rebuildConfig: {},
     makers: [
-        new MakerSquirrel({
-            exe: "template"
-        }),
+        new MakerSquirrel({}),
         new MakerRpm({}),
         new MakerDeb({}),
     ],

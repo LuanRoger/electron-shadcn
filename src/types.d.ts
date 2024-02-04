@@ -6,15 +6,15 @@ declare const MAIN_WINDOW_VITE_NAME: string;
 
 // Preload types
 interface ThemeModeContext {
-    toggle: () => Promise<boolean>
-    dark: () => Promise<void>
-    light: () => Promise<void>
-    system: () => Promise<boolean>
+    toggle: () => Promise<boolean>;
+    dark: () => Promise<void>;
+    light: () => Promise<void>;
+    system: () => Promise<boolean>;
 }
 interface ElectronWindow {
-    minimize: () => Promise<void>
-    maximize: () => Promise<void>
-    close: () => Promise<void>
+    minimize: () => Promise<void>;
+    maximize: () => Promise<void>;
+    close: () => Promise<void>;
 }
 
 declare interface Window {
