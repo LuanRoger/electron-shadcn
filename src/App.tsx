@@ -16,5 +16,5 @@ export default function App() {
     );
 }
 
-const root = createRoot(document.getElementById("app"));
+const root = createRoot(document.getElementById("app")!);
 root.render(<App />);
