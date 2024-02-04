@@ -11,7 +11,13 @@ interface ThemeModeContext {
     light: () => Promise<void>
     system: () => Promise<boolean>
 }
+interface ElectronWindow {
+    minimize: () => Promise<void>
+    maximize: () => Promise<void>
+    close: () => Promise<void>
+}
 
 declare interface Window {
     themeMode: ThemeModeContext;
+    electronWindow: ElectronWindow;
 }

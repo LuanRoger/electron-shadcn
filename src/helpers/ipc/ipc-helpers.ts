@@ -12,17 +12,17 @@ import {
 } from "./ipc-channels";
 
 export function addWindowEventListeners(mainWindow: BrowserWindow) {
-    ipcMain.on(WIN_MINIMIZE_CHANNEL, () => {
+    ipcMain.handle(WIN_MINIMIZE_CHANNEL, () => {
         mainWindow.minimize();
     });
-    ipcMain.on(WIN_MAXIMIZE_CHANNEL, () => {
+    ipcMain.handle(WIN_MAXIMIZE_CHANNEL, () => {
         if (mainWindow.isMaximized()) {
             mainWindow.unmaximize();
         } else {
             mainWindow.maximize();
         }
     });
-    ipcMain.on(WIN_CLOSE_CHANNEL, () => {
+    ipcMain.handle(WIN_CLOSE_CHANNEL, () => {
         mainWindow.close();
     });
 }

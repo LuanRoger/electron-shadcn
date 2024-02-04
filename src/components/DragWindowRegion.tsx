@@ -1,5 +1,5 @@
-import { closeWindow, maximizeWindow, minimizeWindow } from "@/helpers/ipc/ipc-emiters";
-import React, { ReactNode } from "react";
+import { closeWindow, maximizeWindow, minimizeWindow } from "@/helpers/window_helpers";
+import React, { type ReactNode } from "react";
 
 interface DragWindowRegionProps {
     title?: ReactNode;
