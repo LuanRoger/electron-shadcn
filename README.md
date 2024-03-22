@@ -1,12 +1,12 @@
 # electron-shadcn
 
-Template with everything that you will gona need to develop an Electron application from start to the end.
+Template with everything that you will gonna need to develop an Electron application from start to the end.
 
 ![Demo GIF](https://github.com/LuanRoger/electron-shadcn/blob/main/images/demo.gif)
 
 ## Libs and tools
 
-To develop a Electron app, you problaby will need some UI, test, formatter, style or other kind of library or framework, so I install and configure some of them to you.
+To develop a Electron app, you probably will need some UI, test, formatter, style or other kind of library or framework, so I install and configure some of them to you.
 
 ### Engine 🏍️
 
@@ -45,7 +45,7 @@ To develop a Electron app, you problaby will need some UI, test, formatter, styl
 
 ### CI/CD 🚀
 
-- Pre-configured [GitHub Actions workflow](https://github.com/LuanRoger/electron-shadcn/blob/main/.github/workflows/playwright.yml) for test with Playwright
+- Pre-configured [GitHub Actions workflow](https://github.com/LuanRoger/electron-shadcn/blob/main/.github/workflows/playwright.yml) workflow, for test with Playwright
 
 ### Project preferences 🎯
 
