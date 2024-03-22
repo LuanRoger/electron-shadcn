@@ -12,11 +12,11 @@
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"],
+            "@/*": ["./src/*"]
         },
         "outDir": "dist",
         "moduleResolution": "node",
-        "resolveJsonModule": true,
+        "resolveJsonModule": true
     },
-    "include": ["src"],
+    "include": ["src"]
 }

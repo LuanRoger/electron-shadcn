@@ -8,7 +8,6 @@ import {
     THEME_MODE_TOGGLE_CHANNEL,
 } from "./theme-channels";
 
-
 export function addThemeEventListeners() {
     ipcMain.handle(THEME_MODE_CURRENT_CHANNEL, () => nativeTheme.themeSource);
     ipcMain.handle(THEME_MODE_TOGGLE_CHANNEL, () => {
