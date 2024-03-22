@@ -1,4 +1,4 @@
-import { BrowserWindow, nativeTheme } from "electron";
+import { nativeTheme } from "electron";
 import { ipcMain } from "electron";
 import {
     THEME_MODE_CURRENT_CHANNEL,
@@ -6,26 +6,8 @@ import {
     THEME_MODE_LIGHT_CHANNEL,
     THEME_MODE_SYSTEM_CHANNEL,
     THEME_MODE_TOGGLE_CHANNEL,
-    WIN_CLOSE_CHANNEL,
-    WIN_MAXIMIZE_CHANNEL,
-    WIN_MINIMIZE_CHANNEL,
-} from "./ipc-channels";
+} from "./theme-channels";
 
-export function addWindowEventListeners(mainWindow: BrowserWindow) {
-    ipcMain.handle(WIN_MINIMIZE_CHANNEL, () => {
-        mainWindow.minimize();
-    });
-    ipcMain.handle(WIN_MAXIMIZE_CHANNEL, () => {
-        if (mainWindow.isMaximized()) {
-            mainWindow.unmaximize();
-        } else {
-            mainWindow.maximize();
-        }
-    });
-    ipcMain.handle(WIN_CLOSE_CHANNEL, () => {
-        mainWindow.close();
-    });
-}
 
 export function addThemeEventListeners() {
     ipcMain.handle(THEME_MODE_CURRENT_CHANNEL, () => nativeTheme.themeSource);

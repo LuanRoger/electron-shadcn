@@ -1,4 +1,3 @@
-import { exposeThemeContext, exposeWindowContext } from "./helpers/ipc/context-isolations";
+import exposeContexts from "./helpers/ipc/context-exposer";
 
-exposeWindowContext();
-exposeThemeContext();
+exposeContexts();

@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from "electron";
-import { addWindowEventListeners, addThemeEventListeners } from "./helpers/ipc/ipc-helpers";
+import registerListeners from "./helpers/ipc/listeners-register";
 import path from "path";
 
 if (require("electron-squirrel-startup")) {
@@ -18,8 +18,7 @@ const createWindow = () => {
         },
         titleBarStyle: "hidden",
     });
-    addWindowEventListeners(mainWindow);
-    addThemeEventListeners();
+    registerListeners(mainWindow);
 
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
         mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);

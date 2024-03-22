@@ -1,22 +1,10 @@
 import {
-    WIN_CLOSE_CHANNEL,
-    WIN_MAXIMIZE_CHANNEL,
-    WIN_MINIMIZE_CHANNEL,
     THEME_MODE_CURRENT_CHANNEL,
     THEME_MODE_DARK_CHANNEL,
     THEME_MODE_LIGHT_CHANNEL,
     THEME_MODE_SYSTEM_CHANNEL,
     THEME_MODE_TOGGLE_CHANNEL,
-} from "./ipc-channels";
-
-export function exposeWindowContext() {
-    const { contextBridge, ipcRenderer } = window.require("electron");
-    contextBridge.exposeInMainWorld("electronWindow", {
-        minimize: () => ipcRenderer.invoke(WIN_MINIMIZE_CHANNEL),
-        maximize: () => ipcRenderer.invoke(WIN_MAXIMIZE_CHANNEL),
-        close: () => ipcRenderer.invoke(WIN_CLOSE_CHANNEL),
-    });
-}
+} from "./theme-channels";
 
 export function exposeThemeContext() {
     const { contextBridge, ipcRenderer } = window.require("electron");
