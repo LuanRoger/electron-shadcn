@@ -1,4 +1,4 @@
-import { test, expect, _electron as electron, ElectronApplication } from "@playwright/test";
+import { test, expect, _electron as electron, ElectronApplication, Page } from "@playwright/test";
 import { findLatestBuild, parseElectronApp } from "electron-playwright-helpers";
 
 /*
@@ -12,19 +12,17 @@ test.beforeAll(async () => {
     const latestBuild = findLatestBuild();
     const appInfo = parseElectronApp(latestBuild);
     process.env.CI = "e2e";
+    
     electronApp = await electron.launch({
         args: [appInfo.main],
-        executablePath: appInfo.executable,
     });
     electronApp.on("window", async (page) => {
         const filename = page.url()?.split("/").pop();
         console.log(`Window opened: ${filename}`);
 
-        // capture errors
         page.on("pageerror", (error) => {
             console.error(error);
         });
-        // capture console messages
         page.on("console", (msg) => {
             console.log(msg.text());
         });
@@ -32,8 +30,8 @@ test.beforeAll(async () => {
 });
 
 test("renders the first page", async () => {
-    const page = await electronApp.firstWindow();
-    await page.waitForSelector("h1");
-    const text = await page.$eval("h1", (el) => el.textContent);
+    const page: Page = await electronApp.firstWindow();
+    const title = await page.waitForSelector("h1");
+    const text = await title.textContent()
     expect(text).toBe("Home Page");
 });

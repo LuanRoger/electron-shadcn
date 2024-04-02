@@ -12,13 +12,13 @@ jobs:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
               with:
-                  node-version: 18
+                  node-version: 20
             - name: Install dependencies
               run: npm ci
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
-            - name: Create Package
-              run: npm run package
+            - name: Create Executable
+              run: npm run make
             - name: Run Playwright tests
               run: npx playwright test
             - uses: actions/upload-artifact@v3
