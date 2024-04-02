@@ -105,10 +105,12 @@ npm run <script>
 - `storybook`: Start Storybook
 - `build-storybook`: Run the Storybook's build command
 - `test`: Run the default unit-test script (Jest)
-- `test:whatch`: Run the default unit-test script in watch mode (Jest)
+- `test:watch`: Run the default unit-test script in watch mode (Jest)
 - `test:unit`: Run the Jest tests
 - `test:e2e`: Run the Playwright tests
 - `test:all`: Run all tests (Jest and Playwright)
+
+The test scripts involving Playwright require the app be builded before running the tests. So, before run the tests, run the `package`, `make` or `publish` script.
 
 ## How to use
 
