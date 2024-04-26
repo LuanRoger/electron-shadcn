@@ -1,16 +1,16 @@
 # electron-shadcn
 
-Template with everything that you will gonna need to develop an Electron application from start to the end.
+Electron in all its glory. Everything you will need to develop your desktop application, fast and ease
 
 ![Demo GIF](https://github.com/LuanRoger/electron-shadcn/blob/main/images/demo.gif)
 
 ## Libs and tools
 
-To develop a Electron app, you probably will need some UI, test, formatter, style or other kind of library or framework, so I install and configure some of them to you.
+To develop a Electron app, you probably will need some UI, test, formatter, style or other kind of library or framework, so let me install and configure some of them to you.
 
 ### Engine 🏍️
 
-- [Electron 29](https://www.electronjs.org)
+- [Electron 30](https://www.electronjs.org)
 - [Vite 5](https://vitejs.dev)
 - [SWC](https://swc.rs)
 
@@ -27,6 +27,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - [Tailwind CSS](https://tailwindcss.com)
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
+- [i18next](https://www.i18next.com)
 - [Lucide](https://lucide.dev)
 
 ### Test 🧪
