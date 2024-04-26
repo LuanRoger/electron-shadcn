@@ -2,18 +2,23 @@ import { app, BrowserWindow } from "electron";
 import registerListeners from "./helpers/ipc/listeners-register";
 import path from "path";
 
+const inDevelopment = process.env.NODE_ENV === "development";
+
 if (require("electron-squirrel-startup")) {
     app.quit();
 }
 
-const createWindow = () => {
+function createWindow() {
     const preload = path.join(__dirname, "preload.js");
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
+            devTools: inDevelopment,
             contextIsolation: true,
             nodeIntegration: true,
+            nodeIntegrationInSubFrames: false,
+
             preload: preload,
         },
         titleBarStyle: "hidden",
@@ -27,7 +32,7 @@ const createWindow = () => {
             path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
         );
     }
-};
+}
 
 app.whenReady().then(createWindow);
 
