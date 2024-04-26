@@ -12,7 +12,7 @@ test.beforeAll(async () => {
     const latestBuild = findLatestBuild();
     const appInfo = parseElectronApp(latestBuild);
     process.env.CI = "e2e";
-    
+
     electronApp = await electron.launch({
         args: [appInfo.main],
     });
@@ -32,6 +32,6 @@ test.beforeAll(async () => {
 test("renders the first page", async () => {
     const page: Page = await electronApp.firstWindow();
     const title = await page.waitForSelector("h1");
-    const text = await title.textContent()
+    const text = await title.textContent();
     expect(text).toBe("Home Page");
 });
