@@ -9,7 +9,7 @@ import { updateAppLanguage } from "./helpers/language_helpers";
 
 export default function App() {
     const { i18n } = useTranslation();
-    
+
     useEffect(() => {
         setThemeToDefault();
         updateAppLanguage(i18n);

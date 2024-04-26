@@ -10,7 +10,7 @@ export function setAppLanguage(lang: string, i18n: i18n) {
 
 export function updateAppLanguage(i18n: i18n) {
     const localLang = localStorage.getItem(languageLocalStorageKey);
-    if(!localLang) {
+    if (!localLang) {
         return;
     }
 

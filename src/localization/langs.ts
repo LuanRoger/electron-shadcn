@@ -4,11 +4,11 @@ export default [
     {
         key: "en",
         nativeName: "English",
-        prefix: "🇺🇸"
+        prefix: "🇺🇸",
     },
     {
         key: "pt-BR",
         nativeName: "Português (Brasil)",
-        prefix: "🇧🇷"
-    }
-] satisfies Language[]
+        prefix: "🇧🇷",
+    },
+] satisfies Language[];

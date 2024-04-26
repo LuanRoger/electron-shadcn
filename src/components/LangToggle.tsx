@@ -3,7 +3,6 @@ import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 import langs from "@/localization/langs";
 import { useTranslation } from "react-i18next";
 import { setAppLanguage } from "@/helpers/language_helpers";
-import { Hmac } from "crypto";
 
 export default function LangToggle() {
     const { i18n } = useTranslation();
@@ -15,13 +14,11 @@ export default function LangToggle() {
 
     return (
         <ToggleGroup type="single" onValueChange={onValueChange} value={currentLang}>
-            {
-                langs.map(lang => (
-                    <ToggleGroupItem key={lang.key} value={lang.key}>
-                        {`${lang.prefix} ${lang.nativeName}`}
-                    </ToggleGroupItem>
-                ))
-            }
+            {langs.map((lang) => (
+                <ToggleGroupItem key={lang.key} value={lang.key}>
+                    {`${lang.prefix} ${lang.nativeName}`}
+                </ToggleGroupItem>
+            ))}
         </ToggleGroup>
     );
 }
