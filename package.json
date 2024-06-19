@@ -41,7 +41,7 @@
         "@storybook/react-vite": "^8.1.9",
         "@storybook/test": "^8.0.9",
         "@swc/cli": "^0.3.12",
-        "@swc/core": "^1.5.29",
+        "@swc/core": "^1.6.1",
         "@swc/jest": "^0.2.36",
         "@testing-library/jest-dom": "^6.4.6",
         "@testing-library/react": "^16.0.0",
