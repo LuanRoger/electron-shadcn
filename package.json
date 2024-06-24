@@ -38,7 +38,7 @@
         "@storybook/addon-onboarding": "^8.1.9",
         "@storybook/blocks": "^8.0.9",
         "@storybook/react": "^8.0.9",
-        "@storybook/react-vite": "^8.1.9",
+        "@storybook/react-vite": "^8.1.10",
         "@storybook/test": "^8.0.9",
         "@swc/cli": "^0.3.12",
         "@swc/core": "^1.6.5",
