@@ -134,3 +134,13 @@ npm install
 ```bash
 npm run start
 ```
+
+## Used by
+
+- [yaste](https://github.com/LuanRoger/yaste) - yaste (Yet another super ₛᵢₘₚₗₑ text editor) is a text editor, that can be used as an alternative to the native text editor of your SO, maybe.
+
+> Does you've used this template in your project? Add it here and open a PR.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/LuanRoger/electron-shadcn/blob/main/LICENSE) file for details.
