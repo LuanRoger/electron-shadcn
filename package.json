@@ -39,7 +39,7 @@
         "@storybook/blocks": "^8.0.9",
         "@storybook/react": "^8.2.2",
         "@storybook/react-vite": "^8.1.11",
-        "@storybook/test": "^8.0.9",
+        "@storybook/test": "^8.2.4",
         "@swc/cli": "^0.4.0",
         "@swc/core": "^1.6.6",
         "@swc/jest": "^0.2.36",
