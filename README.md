@@ -8,7 +8,7 @@ Electron in all its glory. Everything you will need to develop your beautiful de
 
 To develop a Electron app, you probably will need some UI, test, formatter, style or other kind of library or framework, so let me install and configure some of them to you.
 
-### Engine 🏍️
+### Core 🏍️
 
 - [Electron 30](https://www.electronjs.org)
 - [Vite 5](https://vitejs.dev)
@@ -46,7 +46,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### CI/CD 🚀
 
-- Pre-configured [GitHub Actions workflow](https://github.com/LuanRoger/electron-shadcn/blob/main/.github/workflows/playwright.yml) workflow, for test with Playwright
+- Pre-configured [GitHub Actions workflow](https://github.com/LuanRoger/electron-shadcn/blob/main/.github/workflows/playwright.yml), for test with Playwright
 
 ### Project preferences 🎯
 
