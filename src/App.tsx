@@ -4,7 +4,8 @@ import { syncThemeWithLocal } from "./helpers/theme_helpers";
 import { useTranslation } from "react-i18next";
 import "./localization/i18n";
 import { updateAppLanguage } from "./helpers/language_helpers";
-import AppRouter from "./routes/router";
+import { router } from "./routes/router";
+import { RouterProvider } from "@tanstack/react-router";
 
 export default function App() {
     const { i18n } = useTranslation();
@@ -14,7 +15,7 @@ export default function App() {
         updateAppLanguage(i18n);
     }, [i18n]);
 
-    return <AppRouter />;
+    return <RouterProvider router={router} />;
 }
 
 const root = createRoot(document.getElementById("app")!);
