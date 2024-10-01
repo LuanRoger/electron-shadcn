@@ -34,7 +34,7 @@
         "@playwright/test": "^1.47.2",
         "@storybook/addon-essentials": "^8.3.3",
         "@storybook/addon-interactions": "^8.3.3",
-        "@storybook/addon-links": "^8.3.3",
+        "@storybook/addon-links": "^8.3.4",
         "@storybook/addon-onboarding": "^8.3.3",
         "@storybook/blocks": "^8.3.2",
         "@storybook/react": "^8.2.9",
