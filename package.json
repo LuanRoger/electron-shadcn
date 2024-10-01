@@ -68,7 +68,7 @@
         "@radix-ui/react-slot": "^1.0.2",
         "@radix-ui/react-toggle": "^1.1.0",
         "@radix-ui/react-toggle-group": "^1.1.0",
-        "@vitejs/plugin-react": "^4.3.1",
+        "@vitejs/plugin-react": "^4.3.2",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "electron-squirrel-startup": "^1.0.1",
