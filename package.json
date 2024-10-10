@@ -78,7 +78,7 @@
         "react-dom": "^18.3.1",
         "react-i18next": "^15.0.2",
         "react-query": "^3.39.3",
-        "tailwind-merge": "^2.5.2",
+        "tailwind-merge": "^2.5.3",
         "tailwindcss-animate": "^1.0.7",
         "zod": "^3.23.8"
     }
