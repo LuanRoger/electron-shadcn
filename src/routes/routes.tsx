@@ -33,3 +33,5 @@ export const AboutRoute = createRoute({
     path: "/about",
     component: AboutPage,
 });
+
+export const rootTree = RootRoute.addChildren([HomeRoute, AboutRoute]);
