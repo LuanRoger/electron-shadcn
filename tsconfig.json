@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
         "jsx": "react",
-        "target": "ESNext",
+        "target": "es2019",
         "module": "commonjs",
+        "lib": ["dom", "es2019"],
+        "experimentalDecorators": true,
+        "composite": true,
+        "declaration": true,
         "forceConsistentCasingInFileNames": true,
         "allowJs": false,
-        "skipLibCheck": true,
         "esModuleInterop": true,
         "noImplicitAny": true,
         "sourceMap": true,
