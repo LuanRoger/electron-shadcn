@@ -4,8 +4,12 @@ import path from "path";
 
 const inDevelopment = process.env.NODE_ENV === "development";
 
-if (require("electron-squirrel-startup")) {
-    app.quit();
+const platform = os.platform();
+
+if (platform === 'win32') {
+    if (require("electron-squirrel-startup")) {
+        app.quit();
+    }
 }
 
 function createWindow() {
