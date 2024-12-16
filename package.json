@@ -31,7 +31,7 @@
         "@electron-forge/plugin-vite": "^7.5.0",
         "@electron-forge/shared-types": "^7.4.0",
         "@electron/fuses": "^1.8.0",
-        "@playwright/test": "^1.48.0",
+        "@playwright/test": "^1.49.1",
         "@storybook/addon-essentials": "^8.4.6",
         "@storybook/addon-interactions": "^8.3.5",
         "@storybook/addon-links": "^8.3.5",
