@@ -10,20 +10,20 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### Core 🏍️
 
-- [Electron 32](https://www.electronjs.org)
+- [Electron 33](https://www.electronjs.org)
 - [Vite 5](https://vitejs.dev)
 - [SWC](https://swc.rs)
 
 ### DX 🛠️
 
-- [TypeScript 5](https://www.typescriptlang.org)
+- [TypeScript 5.7](https://www.typescriptlang.org)
 - [Prettier](https://prettier.io)
 - [Zod](https://zod.dev)
 - [React Query (Tan Stack)](https://react-query.tanstack.com)
 
 ### UI 🎨
 
-- [React](https://reactjs.org)
+- [React 18](https://reactjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
