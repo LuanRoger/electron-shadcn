@@ -23,15 +23,15 @@ import AboutPage from "@/pages/AboutPage";
 // 5. Add Link: <Link to="/new">New Page</Link>
 
 export const HomeRoute = createRoute({
-    getParentRoute: () => RootRoute,
-    path: "/",
-    component: HomePage,
+  getParentRoute: () => RootRoute,
+  path: "/",
+  component: HomePage,
 });
 
 export const AboutRoute = createRoute({
-    getParentRoute: () => RootRoute,
-    path: "/about",
-    component: AboutPage,
+  getParentRoute: () => RootRoute,
+  path: "/about",
+  component: AboutPage,
 });
 
 export const rootTree = RootRoute.addChildren([HomeRoute, AboutRoute]);

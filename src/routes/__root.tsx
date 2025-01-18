@@ -3,13 +3,13 @@ import BaseLayout from "@/layouts/BaseLayout";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const RootRoute = createRootRoute({
-    component: Root,
+  component: Root,
 });
 
 function Root() {
-    return (
-        <BaseLayout>
-            <Outlet />
-        </BaseLayout>
-    );
+  return (
+    <BaseLayout>
+      <Outlet />
+    </BaseLayout>
+  );
 }
