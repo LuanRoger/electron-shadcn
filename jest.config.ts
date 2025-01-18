@@ -1,27 +1,20 @@
 import type { Config } from "jest";
 
 const config: Config = {
-    clearMocks: true,
-
+    preset: "ts-jest",
     collectCoverage: true,
-
     coverageDirectory: "coverage",
-
     coverageProvider: "v8",
-
     moduleNameMapper: {
         "^@/(.*)$": "<rootDir>/src/$1",
     },
-
     roots: ["<rootDir>/src/tests/unit"],
-
-    setupFilesAfterEnv: ["<rootDir>/src/tests/unit/setup.ts"],
-
+    setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
     testEnvironment: "jsdom",
-
     transform: {
-        "^.+\\.(t|j)sx?$": "@swc/jest",
+        "^.+\\.(ts|tsx)$": "ts-jest",
     },
+    transformIgnorePatterns: ["/node_modules/"],
 };
 
 export default config;
