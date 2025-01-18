@@ -27,10 +27,11 @@ export async function setTheme(newTheme: ThemeMode) {
       await window.themeMode.light();
       updateDocumentTheme(false);
       break;
-    case "system":
+    case "system": {
       const isDarkMode = await window.themeMode.system();
       updateDocumentTheme(isDarkMode);
       break;
+    }
   }
 
   localStorage.setItem(THEME_KEY, newTheme);
