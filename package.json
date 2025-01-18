@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
     "main": ".vite/build/main.js",
+    "private": true,
     "scripts": {
         "start": "electron-forge start",
         "package": "electron-forge package",
@@ -47,6 +48,7 @@
         "prettier": "^3.4.2",
         "prettier-plugin-tailwindcss": "^0.6.10",
         "tailwindcss": "^3.4.17",
+        "ts-jest": "^29.2.5",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.3",
         "vite": "^6.0.7"

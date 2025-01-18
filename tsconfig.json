@@ -1,9 +1,8 @@
 {
     "compilerOptions": {
         "jsx": "react",
-        "target": "es2019",
-        "module": "commonjs",
-        "lib": ["dom", "es2019"],
+        "target": "ESNext",
+        "module": "ESNext",
         "experimentalDecorators": true,
         "composite": true,
         "declaration": true,
