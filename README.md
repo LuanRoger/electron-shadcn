@@ -48,6 +48,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 ### Project preferences 🎯
 
 - Use Context isolation
+- [React Compiler](https://react.dev/learn/react-compiler) is enabled by default.
 - `titleBarStyle`: hidden (Using custom title bar)
 - Geist as default font
 - Some default styles was applied, check the [`styles`](https://github.com/LuanRoger/electron-shadcn/tree/main/src/styles) directory
