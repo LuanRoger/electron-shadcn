@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NavigationMenu() {
   return (
-    <nav>
+    <nav className="font-mono text-muted-foreground">
       <ul className="flex gap-2 p-2 text-sm">
         <li>
           <Link to="/">Home</Link>
