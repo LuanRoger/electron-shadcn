@@ -1,17 +1,35 @@
-import { Link } from "@tanstack/react-router";
 import React from "react";
+import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
+import {
+  NavigationMenu as NavigationMenuBase,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "../ui/navigation-menu";
 
 export default function NavigationMenu() {
+  const { t } = useTranslation();
+
   return (
-    <nav className="font-mono text-muted-foreground">
-      <ul className="flex gap-2 p-2 text-sm">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-    </nav>
+    <NavigationMenuBase className="px-2 font-mono text-muted-foreground">
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link to="/">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              {t("titleHomePage")}
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/about">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              {t("titleSecondPage")}
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenuBase>
   );
 }
