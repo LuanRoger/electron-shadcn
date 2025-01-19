@@ -17,7 +17,14 @@ export default defineConfig((env) => {
     build: {
       outDir: `.vite/renderer/${name}`,
     },
-    plugins: [pluginExposeRenderer(name), react()],
+    plugins: [
+      pluginExposeRenderer(name),
+      react({
+        babel: {
+          plugins: [["babel-plugin-react-compiler"]],
+        },
+      }),
+    ],
     resolve: {
       preserveSymlinks: true,
       alias: {

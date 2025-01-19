@@ -3,6 +3,10 @@ import registerListeners from "./helpers/ipc/listeners-register";
 // "electron-squirrel-startup" seems broken when packaging with vite
 //import started from "electron-squirrel-startup";
 import path from "path";
+import {
+  installExtension,
+  REACT_DEVELOPER_TOOLS,
+} from "electron-devtools-installer";
 
 const inDevelopment = process.env.NODE_ENV === "development";
 
@@ -32,7 +36,16 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(createWindow);
+async function installExtensions() {
+  try {
+    const result = await installExtension(REACT_DEVELOPER_TOOLS);
+    console.log(`Extensions installed successfully: ${result.name}`);
+  } catch {
+    console.error("Failed to install extensions");
+  }
+}
+
+app.whenReady().then(createWindow).then(installExtensions);
 
 //osX only
 app.on("window-all-closed", () => {
