@@ -13,9 +13,9 @@ export default function HomePage() {
       <div className="flex flex-1 flex-col items-center justify-center gap-2">
         <InitialIcons />
         <span>
-          <h1 className="font-mono text-4xl font-bold">{t("title")}</h1>
+          <h1 className="font-mono text-4xl font-bold">{t("appName")}</h1>
           <p className="text-end text-sm uppercase text-muted-foreground">
-            {t("homePageName")}
+            {t("titleHomePage")}
           </p>
         </span>
         <LangToggle />

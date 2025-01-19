@@ -6,18 +6,16 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
-        title: "electron-shadcn",
-        homePageName: "Home Page",
-        description: "This is an example of translation in en",
-        titleAbount: "About",
+        appName: "electron-shadcn",
+        titleHomePage: "Home Page",
+        titleSecondPage: "Second Page",
       },
     },
     "pt-BR": {
       translation: {
-        title: "electron-shadcn",
-        homePageName: "Página Inicial",
-        description: "Este é um exemplo de tradução em pt_BR",
-        titleAbount: "Sobre",
+        appName: "electron-shadcn",
+        titleHomePage: "Página Inicial",
+        titleSecondPage: "Segunda Página",
       },
     },
   },

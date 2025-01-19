@@ -23,7 +23,7 @@ export default function NavigationMenu() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/about">
+          <Link to="/second-page">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               {t("titleSecondPage")}
             </NavigationMenuLink>
