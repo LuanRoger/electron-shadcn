@@ -56,6 +56,8 @@ export default {
       },
       fontFamily: {
         sans: ["Geist", "sans-serif"],
+        mono: ["Geist Mono", "monospace"],
+        tomorrow: ["Tomorrow", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
