@@ -29,6 +29,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
 - [i18next](https://www.i18next.com)
+- [TanStack Router](https://tanstack.com/router)
 - [Lucide](https://lucide.dev)
 
 ### Test 🧪
@@ -52,6 +53,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - `titleBarStyle`: hidden (Using custom title bar)
 - Geist as default font
 - Some default styles was applied, check the [`styles`](https://github.com/LuanRoger/electron-shadcn/tree/main/src/styles) directory
+- React DevTools are installed by default
 
 > If you don't know some of these libraries or tools, I recommend you to check their documentation to understand how they work and how to use them.
 
@@ -63,6 +65,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
     ├── ./src/assets/
     │   └── ./src/assets/fonts/
     ├── ./src/components/
+    │   ├── ./src/components/template
     │   └── ./src/components/ui/
     ├── ./src/helpers/
     │   └── ./src/helpers/ipc/
@@ -76,6 +79,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - `src/`: Main directory
   - `assets/`: Store assets like images, fonts, etc.
   - `components/`: Store UI components
+    - `template/`: Store the all not important components used by the template. It doesn't include the `WindowRegion` or the theme toggler, if you want to start an empty project, you can safely delete this directory.
     - `ui/`: Store Shadcn UI components (this is the default direcotry used by Shadcn UI)
   - `helpers/`: Store IPC related functions to be called in the renderer process
     - `ipc/`: Directory to store IPC context and listener functions
