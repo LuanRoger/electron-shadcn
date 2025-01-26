@@ -20,12 +20,12 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - [Prettier](https://prettier.io)
 - [ESLint 9](https://eslint.org)
 - [Zod](https://zod.dev)
-- [React Query (Tan Stack)](https://react-query.tanstack.com)
+- [React Query (TanStack)](https://react-query.tanstack.com)
 
 ### UI 🎨
 
 - [React 19](https://reactjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
+- [Tailwind 4](https://tailwindcss.com)
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
 - [i18next](https://www.i18next.com)
