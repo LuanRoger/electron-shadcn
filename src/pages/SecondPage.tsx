@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "@/components/temp/Footer";
+import Footer from "@/components/template/Footer";
 import { useTranslation } from "react-i18next";
 
 export default function SecondPage() {
