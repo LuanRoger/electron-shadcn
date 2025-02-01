@@ -34,7 +34,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### Test 🧪
 
-- [Jest](https://jestjs.io)
+- [Vitest](https://vitest.dev)
 - [Playwright](https://playwright.dev)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
@@ -88,7 +88,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
   - `lib/`: Store libraries and other utilities
   - `pages/`: Store app's pages
   - `style/`: Store global styles
-  - `tests/`: Store tests (from Jest and Playwright)
+  - `tests/`: Store tests (from Vitest and Playwright)
 
 ## NPM script
 
@@ -105,11 +105,11 @@ npm run <script>
 - `lint`: Run ESLint to lint the code
 - `format`: Run Prettier to check the code (it doesn't change the code)
 - `format:write`: Run Prettier to format the code
-- `test`: Run the default unit-test script (Jest)
-- `test:watch`: Run the default unit-test script in watch mode (Jest)
-- `test:unit`: Run the Jest tests
+- `test`: Run the default unit-test script (Vitest)
+- `test:watch`: Run the default unit-test script in watch mode (Vitest)
+- `test:unit`: Run the Vitest tests
 - `test:e2e`: Run the Playwright tests
-- `test:all`: Run all tests (Jest and Playwright)
+- `test:all`: Run all tests (Vitest and Playwright)
 
 > The test scripts involving Playwright require the app be builded before running the tests. So, before run the tests, run the `package`, `make` or `publish` script.
 
