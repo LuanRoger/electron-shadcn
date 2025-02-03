@@ -51,7 +51,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-compiler": "^19.0.0-beta-27714ef-20250124",
+    "eslint-plugin-react-compiler": "^19.0.0-beta-714736e-20250131",
     "globals": "^15.14.0",
     "jsdom": "^26.0.0",
     "postcss": "^8.5.1",
