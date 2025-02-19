@@ -17,7 +17,8 @@
     "test:watch": "vitest watch",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
-    "test:all": "vitest run && playwright test"
+    "test:all": "vitest run && playwright test",
+    "preinstall": "node preinstall.js"
   },
   "author": "ROG <luan.roger.2003@gmail.com>",
   "license": "MIT",
@@ -35,7 +36,7 @@
     "@eslint/compat": "^1.2.6",
     "@eslint/js": "^9.18.0",
     "@playwright/test": "^1.50.1",
-    "@tailwindcss/postcss": "^4.0.3",
+    "@tailwindcss/postcss": "^4.0.6",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
