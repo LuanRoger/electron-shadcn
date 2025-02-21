@@ -57,6 +57,13 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 > If you don't know some of these libraries or tools, I recommend you to check their documentation to understand how they work and how to use them.
 
+> [!WARNING]
+> Prefer to use the [`canary` release of `shadcn/ui`](https://ui.shadcn.com/docs/tailwind-v4) to avoid compatibility issues with React 19 and Tailwind v4.
+
+```bash
+npx shadcn@canary add button
+```
+
 ## Directory structure
 
 ```plaintext
