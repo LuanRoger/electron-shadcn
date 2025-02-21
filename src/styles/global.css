@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -111,7 +111,8 @@
     font-weight: 700;
     font-style: italic;
 
-    src: url("../assets/fonts/tomorrow/tomorrow-bold-italic.ttf") format("truetype");
+    src: url("../assets/fonts/tomorrow/tomorrow-bold-italic.ttf")
+      format("truetype");
   }
 }
 
@@ -180,11 +181,8 @@
 }
 
 @layer base {
-  * {
-    @apply m-0 border-border p-0;
-  }
   body {
-    @apply overflow-hidden bg-background text-foreground;
+    @apply overflow-hidden;
   }
   .draglayer {
     @apply bg-background;
@@ -192,5 +190,14 @@
   }
   button {
     @apply cursor-pointer;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
