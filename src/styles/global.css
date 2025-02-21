@@ -181,11 +181,8 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground overflow-hidden;
+    @apply overflow-hidden;
   }
   .draglayer {
     @apply bg-background;
@@ -193,5 +190,14 @@
   }
   button {
     @apply cursor-pointer;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
