@@ -22,7 +22,7 @@
   "author": "ROG <luan.roger.2003@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@electron-forge/cli": "^7.6.1",
+    "@electron-forge/cli": "^7.7.0",
     "@electron-forge/maker-deb": "^7.6.1",
     "@electron-forge/maker-rpm": "^7.6.1",
     "@electron-forge/maker-squirrel": "^7.6.1",
