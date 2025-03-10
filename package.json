@@ -47,7 +47,7 @@
     "electron": "34.0.2",
     "electron-devtools-installer": "^4.0.0",
     "electron-playwright-helpers": "^1.7.1",
-    "eslint": "^9.19.0",
+    "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
