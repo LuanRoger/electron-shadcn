@@ -1,5 +1,6 @@
 import path from "path";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import type { ConfigEnv, UserConfig } from "vite";
 import { defineConfig } from "vite";
 import { pluginExposeRenderer } from "./vite.base.config";
@@ -19,6 +20,7 @@ export default defineConfig((env) => {
     },
     plugins: [
       pluginExposeRenderer(name),
+      tailwindcss(),
       react({
         babel: {
           plugins: [["babel-plugin-react-compiler"]],
