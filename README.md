@@ -10,13 +10,13 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### Core 🏍️
 
-- [Electron 34](https://www.electronjs.org)
+- [Electron 35](https://www.electronjs.org)
 - [Vite 6](https://vitejs.dev)
 - [SWC](https://swc.rs)
 
 ### DX 🛠️
 
-- [TypeScript 5.7](https://www.typescriptlang.org)
+- [TypeScript 5.8](https://www.typescriptlang.org)
 - [Prettier](https://prettier.io)
 - [ESLint 9](https://eslint.org)
 - [Zod](https://zod.dev)
