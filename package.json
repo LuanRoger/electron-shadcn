@@ -44,7 +44,7 @@
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.3",
-    "electron": "34.0.2",
+    "electron": "35.0.1",
     "electron-devtools-installer": "^4.0.0",
     "electron-playwright-helpers": "^1.7.1",
     "eslint": "^9.22.0",
