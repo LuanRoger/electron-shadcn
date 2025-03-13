@@ -8,6 +8,7 @@
     "composite": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
+    "resolvePackageJsonImports": true,
     "allowJs": false,
     "esModuleInterop": true,
     "noImplicitAny": true,
