@@ -6,14 +6,13 @@ import { MakerRpm } from "@electron-forge/maker-rpm";
 import { VitePlugin } from "@electron-forge/plugin-vite";
 import { FusesPlugin } from "@electron-forge/plugin-fuses";
 import { FuseV1Options, FuseVersion } from "@electron/fuses";
-
-const name = 'electron-shadcn'
+import pkg from "./package.json";
 
 const config: ForgeConfig = {
   packagerConfig: {
+    executableName: pkg.name, 
+    name: pkg.productName, 
     asar: true,
-    name,
-    executableName: name
   },
   rebuildConfig: {},
   makers: [
