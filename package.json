@@ -73,7 +73,7 @@
     "@tanstack/react-router": "^1.114.17",
     "@tanstack/router-devtools": "^1.114.27",
     "@vitejs/plugin-react": "^4.3.4",
-    "babel-plugin-react-compiler": "^19.0.0-beta-bafa41b-20250307",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e993439-20250328",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "electron-squirrel-startup": "^1.0.1",
