@@ -63,7 +63,7 @@
     "vitest": "^3.0.8"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^12.2.0",
+    "@icons-pack/react-simple-icons": "^12.5.0",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.1.1",
