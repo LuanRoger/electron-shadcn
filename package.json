@@ -43,7 +43,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "electron": "^36.3.1",
+    "electron": "^36.4.0",
     "electron-devtools-installer": "^4.0.0",
     "electron-playwright-helpers": "^1.7.1",
     "eslint": "^9.25.1",
