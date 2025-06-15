@@ -14,12 +14,12 @@ export default function DragWindowRegion({ title }: DragWindowRegionProps) {
     <div className="flex w-screen items-stretch justify-between">
       <div className="draglayer w-full">
         {title && (
-          <div className="flex flex-1 select-none whitespace-nowrap p-2 text-xs text-gray-400">
+          <div className="flex flex-1 select-none justify-center whitespace-nowrap p-2 text-xs text-gray-400">
             {title}
           </div>
         )}
       </div>
-      <WindowButtons />
+      {/* <WindowButtons /> */}
     </div>
   );
 }

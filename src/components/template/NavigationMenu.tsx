@@ -29,6 +29,13 @@ export default function NavigationMenu() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/transactions">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Transactions
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenuBase>
   );

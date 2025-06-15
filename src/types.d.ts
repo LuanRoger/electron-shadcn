@@ -4,6 +4,26 @@
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
 declare const MAIN_WINDOW_VITE_NAME: string;
 
+// Transaction and Category types
+interface Transaction {
+  id: string;
+  user: string;
+  source: string;
+  date: Date;
+  amount: number;
+  currency: string;
+  iban?: string;
+  other_party_iban?: string;
+  other_party?: string;
+  usage: string;
+  category?: Category;
+}
+
+interface Category {
+  name: string;
+  subcategory?: string;
+}
+
 // Preload types
 interface ThemeModeContext {
   toggle: () => Promise<boolean>;
@@ -18,7 +38,36 @@ interface ElectronWindow {
   close: () => Promise<void>;
 }
 
+interface TransactionDBContext {
+  // Basic CRUD operations
+  addTransaction: (transaction: Transaction) => Promise<boolean>;
+  addTransactions: (transactions: Transaction[]) => Promise<boolean>;
+  updateTransaction: (transaction: Transaction) => Promise<boolean>;
+  removeTransaction: (id: string) => Promise<boolean>;
+  getTransactionById: (id: string) => Promise<Transaction | null>;
+  getAllTransactions: () => Promise<Transaction[]>;
+
+  // Search operations
+  getTransactionsByDateRange: (startDate: Date, endDate: Date) => Promise<Transaction[]>;
+  getTransactionsByUser: (user: string) => Promise<Transaction[]>;
+  getTransactionsByCategory: (name: string, subcategory?: string) => Promise<Transaction[]>;
+  searchTransactions: (filters: any) => Promise<Transaction[]>;
+
+  // Utility operations
+  getTransactionCount: () => Promise<number>;
+  getTransactionsPaginated: (page: number, limit: number) => Promise<{
+    transactions: Transaction[];
+    total: number;
+    page: number;
+    totalPages: number;
+  }>;
+
+  // Database operations
+  backupDatabase: (backupPath: string) => Promise<boolean>;
+}
+
 declare interface Window {
   themeMode: ThemeModeContext;
   electronWindow: ElectronWindow;
+  transactionDB: TransactionDBContext;
 }
