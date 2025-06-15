@@ -82,6 +82,7 @@
     "electron-squirrel-startup": "^1.0.1",
     "i18next": "^25.0.1",
     "lucide-react": "^0.503.0",
+    "node-abi": "^3.75.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.5.1",
