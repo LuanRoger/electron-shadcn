@@ -444,6 +444,3 @@ export class TransactionDB {
         }
     }
 }
-
-// Export a default instance
-export const transactionDB = TransactionDB.getInstance();
