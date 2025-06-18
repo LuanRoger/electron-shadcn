@@ -7,20 +7,15 @@ import { Transaction, Category } from './model';
  * Database class for managing SQLite transactions
  */
 export class TransactionDB {
-    private db: Database.Database;
+    private db: Database.Database | null = null;
     private static instance: TransactionDB;
+    private _isLoaded: boolean = false;
+    private _currentDbPath: string | null = null;
 
     constructor(dbPath?: string) {
-        // Use app.getPath('userData') for production or provided path
-        const defaultPath = path.join(
-            process.env.NODE_ENV === 'development'
-                ? process.cwd()
-                : app?.getPath('userData') || process.cwd(),
-            'transactions.db'
-        );
-
-        this.db = new Database(dbPath || defaultPath);
-        this.initializeDatabase();
+        if (dbPath) {
+            this.loadDatabase(dbPath);
+        }
     }
 
     /**
@@ -34,9 +29,104 @@ export class TransactionDB {
     }
 
     /**
+     * Check if a database is currently loaded
+     */
+    get isLoaded(): boolean {
+        return this._isLoaded;
+    }
+
+    /**
+     * Get the current database path
+     */
+    get currentDbPath(): string | null {
+        return this._currentDbPath;
+    }
+
+    /**
+     * Load a database from the specified path
+     */
+    loadDatabase(dbPath: string): boolean {
+        try {
+            // Close existing database if open
+            if (this.db) {
+                this.db.close();
+            }
+
+            // Verify the file exists and is a valid SQLite database
+            if (!require('fs').existsSync(dbPath)) {
+                throw new Error(`Database file does not exist: ${dbPath}`);
+            }
+
+            this.db = new Database(dbPath);
+            this._currentDbPath = dbPath;
+            this._isLoaded = true;
+
+            // Ensure the database has the correct schema
+            this.initializeDatabase();
+
+            return true;
+        } catch (error) {
+            console.error('Error loading database:', error);
+            this.db = null;
+            this._currentDbPath = null;
+            this._isLoaded = false;
+            return false;
+        }
+    }
+
+    /**
+     * Create a new database at the specified path
+     */
+    createDatabase(dbPath: string): boolean {
+        try {
+            // Close existing database if open
+            if (this.db) {
+                this.db.close();
+            }
+
+            this.db = new Database(dbPath);
+            this._currentDbPath = dbPath;
+            this._isLoaded = true;
+
+            // Initialize the schema for the new database
+            this.initializeDatabase();
+
+            return true;
+        } catch (error) {
+            console.error('Error creating database:', error);
+            this.db = null;
+            this._currentDbPath = null;
+            this._isLoaded = false;
+            return false;
+        }
+    }
+
+    /**
+     * Close the current database
+     */
+    closeDatabase(): void {
+        if (this.db) {
+            this.db.close();
+            this.db = null;
+            this._currentDbPath = null;
+            this._isLoaded = false;
+        }
+    }
+
+    /**
+     * Ensure database is loaded before operations
+     */
+    private ensureLoaded(): void {
+        if (!this._isLoaded || !this.db) {
+            throw new Error('No database loaded. Please load a database file first.');
+        }
+    }
+
+    /**
      * Initialize the database schema
      */
     private initializeDatabase(): void {
+        this.ensureLoaded();
         const createTableSQL = `
       CREATE TABLE IF NOT EXISTS transactions (
         id TEXT PRIMARY KEY,
@@ -61,8 +151,8 @@ export class TransactionDB {
       CREATE INDEX IF NOT EXISTS idx_transactions_category ON transactions(category);
     `;
 
-        this.db.exec(createTableSQL);
-        this.db.exec(createIndexSQL);
+        this.db!.exec(createTableSQL);
+        this.db!.exec(createIndexSQL);
     }
 
     /**
@@ -107,8 +197,9 @@ export class TransactionDB {
      * Add a new transaction
      */
     addTransaction(transaction: Transaction): boolean {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         INSERT INTO transactions (
           id, user, source, date, amount, currency, iban, 
           other_party_iban, other_party, usage, category
@@ -130,8 +221,9 @@ export class TransactionDB {
      * Add multiple transactions in a single transaction
      */
     addTransactions(transactions: Transaction[]): boolean {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         INSERT INTO transactions (
           id, user, source, date, amount, currency, iban, 
           other_party_iban, other_party, usage, category
@@ -141,7 +233,7 @@ export class TransactionDB {
         )
       `);
 
-            const insertMany = this.db.transaction((transactions: Transaction[]) => {
+            const insertMany = this.db!.transaction((transactions: Transaction[]) => {
                 for (const transaction of transactions) {
                     stmt.run(this.transactionToRow(transaction));
                 }
@@ -159,8 +251,9 @@ export class TransactionDB {
      * Remove a transaction by ID
      */
     removeTransaction(id: string): boolean {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare('DELETE FROM transactions WHERE id = ?');
+            const stmt = this.db!.prepare('DELETE FROM transactions WHERE id = ?');
             const result = stmt.run(id);
             return result.changes > 0;
         } catch (error) {
@@ -173,8 +266,9 @@ export class TransactionDB {
      * Update an existing transaction
      */
     updateTransaction(transaction: Transaction): boolean {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         UPDATE transactions SET
           user = @user,
           source = @source,
@@ -202,8 +296,9 @@ export class TransactionDB {
      * Get all transactions
      */
     getAllTransactions(): Transaction[] {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare('SELECT * FROM transactions ORDER BY date DESC');
+            const stmt = this.db!.prepare('SELECT * FROM transactions ORDER BY date DESC');
             const rows = stmt.all();
             return rows.map(row => this.rowToTransaction(row));
         } catch (error) {
@@ -216,8 +311,9 @@ export class TransactionDB {
      * Get transaction by ID
      */
     getTransactionById(id: string): Transaction | null {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare('SELECT * FROM transactions WHERE id = ?');
+            const stmt = this.db!.prepare('SELECT * FROM transactions WHERE id = ?');
             const row = stmt.get(id);
             return row ? this.rowToTransaction(row) : null;
         } catch (error) {
@@ -230,8 +326,9 @@ export class TransactionDB {
      * Search transactions by date range
      */
     getTransactionsByDateRange(startDate: Date, endDate: Date): Transaction[] {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         SELECT * FROM transactions 
         WHERE date >= ? AND date <= ? 
         ORDER BY date DESC
@@ -249,8 +346,9 @@ export class TransactionDB {
      * Search transactions by user
      */
     getTransactionsByUser(user: string): Transaction[] {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         SELECT * FROM transactions 
         WHERE user = ? 
         ORDER BY date DESC
@@ -268,6 +366,7 @@ export class TransactionDB {
      * Search transactions by category
      */
     getTransactionsByCategory(categoryName: string, subcategory?: string): Transaction[] {
+        this.ensureLoaded();
         try {
             let query = `
         SELECT * FROM transactions 
@@ -285,7 +384,7 @@ export class TransactionDB {
 
             query += ` ORDER BY date DESC`;
 
-            const stmt = this.db.prepare(query);
+            const stmt = this.db!.prepare(query);
             const rows = stmt.all(...params);
             return rows.map(row => this.rowToTransaction(row));
         } catch (error) {
@@ -308,6 +407,7 @@ export class TransactionDB {
         maxAmount?: number;
         searchText?: string;
     }): Transaction[] {
+        this.ensureLoaded();
         try {
             let query = 'SELECT * FROM transactions WHERE 1=1';
             const params: any[] = [];
@@ -360,7 +460,7 @@ export class TransactionDB {
 
             query += ' ORDER BY date DESC';
 
-            const stmt = this.db.prepare(query);
+            const stmt = this.db!.prepare(query);
             const rows = stmt.all(...params);
             return rows.map(row => this.rowToTransaction(row));
         } catch (error) {
@@ -373,8 +473,9 @@ export class TransactionDB {
      * Get transaction count
      */
     getTransactionCount(): number {
+        this.ensureLoaded();
         try {
-            const stmt = this.db.prepare('SELECT COUNT(*) as count FROM transactions');
+            const stmt = this.db!.prepare('SELECT COUNT(*) as count FROM transactions');
             const result = stmt.get() as { count: number };
             return result.count;
         } catch (error) {
@@ -392,13 +493,14 @@ export class TransactionDB {
         page: number;
         totalPages: number;
     } {
+        this.ensureLoaded();
         try {
             const offset = (page - 1) * limit;
 
-            const countStmt = this.db.prepare('SELECT COUNT(*) as count FROM transactions');
+            const countStmt = this.db!.prepare('SELECT COUNT(*) as count FROM transactions');
             const total = (countStmt.get() as { count: number }).count;
 
-            const stmt = this.db.prepare(`
+            const stmt = this.db!.prepare(`
         SELECT * FROM transactions 
         ORDER BY date DESC 
         LIMIT ? OFFSET ?
@@ -428,15 +530,21 @@ export class TransactionDB {
      * Close the database connection
      */
     close(): void {
-        this.db.close();
+        if (this.db) {
+            this.db.close();
+            this.db = null;
+            this._currentDbPath = null;
+            this._isLoaded = false;
+        }
     }
 
     /**
      * Execute a backup of the database
      */
     backup(backupPath: string): boolean {
+        this.ensureLoaded();
         try {
-            this.db.backup(backupPath);
+            this.db!.backup(backupPath);
             return true;
         } catch (error) {
             console.error('Error creating backup:', error);
