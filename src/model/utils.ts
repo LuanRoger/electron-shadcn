@@ -117,7 +117,17 @@ export function parseDate(dateInput: string | Date | number): Date {
     }
 
     if (typeof dateInput === 'number') {
-        return new Date(dateInput);
+        // Check if the number is likely to be in seconds (Unix timestamp from Python)
+        // or milliseconds (JavaScript timestamp)
+        // Timestamps before year 2001 in milliseconds would be less than 1000000000000
+        // but in seconds would be less than 1000000000 (year ~2001)
+        if (dateInput < 10000000000) {
+            // Likely seconds (Python datetime.timestamp() format)
+            return new Date(dateInput * 1000);
+        } else {
+            // Likely milliseconds (JavaScript Date.getTime() format)
+            return new Date(dateInput);
+        }
     }
 
     // Try to parse string date
@@ -127,6 +137,20 @@ export function parseDate(dateInput: string | Date | number): Date {
     }
 
     return parsed;
+}
+
+/**
+ * Convert JavaScript Date to Unix timestamp in seconds (Python compatible)
+ */
+export function dateToUnixSeconds(date: Date): number {
+    return Math.floor(date.getTime() / 1000);
+}
+
+/**
+ * Convert Unix timestamp in seconds to JavaScript Date
+ */
+export function unixSecondsToDate(timestamp: number): Date {
+    return new Date(timestamp * 1000);
 }
 
 /**

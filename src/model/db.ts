@@ -2,6 +2,7 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import { app } from 'electron';
 import { Transaction, Category } from './model';
+import { dateToUnixSeconds, unixSecondsToDate } from './utils';
 
 /**
  * Database class for managing SQLite transactions
@@ -163,7 +164,7 @@ export class TransactionDB {
             id: transaction.id,
             user: transaction.user,
             source: transaction.source,
-            date: transaction.date.getTime(), // Store as Unix timestamp
+            date: dateToUnixSeconds(transaction.date), // Store as Unix timestamp in seconds (Python compatible)
             amount: transaction.amount,
             currency: transaction.currency,
             iban: transaction.iban || null,
@@ -182,7 +183,7 @@ export class TransactionDB {
             id: row.id,
             user: row.user,
             source: row.source,
-            date: new Date(row.date), // Convert from Unix timestamp
+            date: unixSecondsToDate(row.date), // Convert from Unix timestamp in seconds to JavaScript Date
             amount: row.amount,
             currency: row.currency,
             iban: row.iban,
@@ -334,7 +335,10 @@ export class TransactionDB {
         ORDER BY date DESC
       `);
 
-            const rows = stmt.all(startDate.getTime(), endDate.getTime());
+            const rows = stmt.all(
+                dateToUnixSeconds(startDate),
+                dateToUnixSeconds(endDate)
+            );
             return rows.map(row => this.rowToTransaction(row));
         } catch (error) {
             console.error('Error getting transactions by date range:', error);
@@ -434,12 +438,12 @@ export class TransactionDB {
 
             if (filters.startDate) {
                 query += ' AND date >= ?';
-                params.push(filters.startDate.getTime());
+                params.push(dateToUnixSeconds(filters.startDate));
             }
 
             if (filters.endDate) {
                 query += ' AND date <= ?';
-                params.push(filters.endDate.getTime());
+                params.push(dateToUnixSeconds(filters.endDate));
             }
 
             if (filters.minAmount !== undefined) {

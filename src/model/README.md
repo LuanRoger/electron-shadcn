@@ -145,7 +145,7 @@ CREATE TABLE transactions (
   id TEXT PRIMARY KEY,
   user TEXT NOT NULL,
   source TEXT NOT NULL,
-  date INTEGER NOT NULL,
+  date INTEGER NOT NULL, -- Unix timestamp in seconds (Python datetime.timestamp() compatible)
   amount REAL NOT NULL,
   currency TEXT NOT NULL,
   iban TEXT,
@@ -162,6 +162,14 @@ CREATE INDEX idx_transactions_date ON transactions(date);
 CREATE INDEX idx_transactions_user ON transactions(user);
 CREATE INDEX idx_transactions_category ON transactions(category);
 ```
+
+### Date Handling
+
+**Important**: This database schema is compatible with Python's `datetime.timestamp()` format, which returns Unix timestamps in **seconds** (not milliseconds like JavaScript's `Date.getTime()`).
+
+- **Storage**: Dates are stored as Unix timestamps in seconds
+- **Conversion**: The database layer automatically converts between JavaScript `Date` objects and Unix seconds
+- **Compatibility**: Works with existing data from Python applications using `datetime.timestamp()`
 
 ## Performance Considerations
 
