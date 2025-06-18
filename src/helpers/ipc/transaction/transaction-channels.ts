@@ -20,6 +20,15 @@ export const TRANSACTION_CHANNELS = {
 
     // Database operations
     BACKUP_DATABASE: 'transaction:backup',
+
+    // Database file operations
+    LOAD_DATABASE: 'database:load',
+    CREATE_DATABASE: 'database:create',
+    CLOSE_DATABASE: 'database:close',
+    IS_DATABASE_LOADED: 'database:is-loaded',
+    GET_DATABASE_PATH: 'database:get-path',
+    SELECT_DATABASE_FILE: 'database:select-file',
+    SAVE_DATABASE_FILE: 'database:save-file',
 } as const;
 
 export type TransactionChannel = typeof TRANSACTION_CHANNELS[keyof typeof TRANSACTION_CHANNELS];

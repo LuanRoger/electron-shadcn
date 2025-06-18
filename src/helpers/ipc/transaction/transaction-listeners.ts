@@ -1,13 +1,73 @@
-import { ipcMain } from 'electron';
+import { ipcMain, dialog } from 'electron';
 import { TransactionDB } from '../../../model/db';
 import { Transaction } from '../../../model/model';
 import { TRANSACTION_CHANNELS } from './transaction-channels';
+
+let listenersRegistered = false;
 
 /**
  * Register all transaction-related IPC listeners
  */
 export function addTransactionEventListeners() {
+    if (listenersRegistered) {
+        return;
+    }
+
     const db = TransactionDB.getInstance();
+
+    // Database file operations
+    ipcMain.handle(TRANSACTION_CHANNELS.LOAD_DATABASE, (_, filePath: string) => {
+        return db.loadDatabase(filePath);
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.CREATE_DATABASE, (_, filePath: string) => {
+        return db.createDatabase(filePath);
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.CLOSE_DATABASE, () => {
+        db.closeDatabase();
+        return true;
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.IS_DATABASE_LOADED, () => {
+        return db.isLoaded;
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.GET_DATABASE_PATH, () => {
+        return db.currentDbPath;
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.SELECT_DATABASE_FILE, async (event) => {
+        const result = await dialog.showOpenDialog({
+            title: 'Select Database File',
+            filters: [
+                { name: 'SQLite Database', extensions: ['db', 'sqlite', 'sqlite3'] },
+                { name: 'All Files', extensions: ['*'] }
+            ],
+            properties: ['openFile']
+        });
+
+        if (!result.canceled && result.filePaths.length > 0) {
+            return result.filePaths[0];
+        }
+        return null;
+    });
+
+    ipcMain.handle(TRANSACTION_CHANNELS.SAVE_DATABASE_FILE, async (event) => {
+        const result = await dialog.showSaveDialog({
+            title: 'Create New Database',
+            defaultPath: 'transactions.db',
+            filters: [
+                { name: 'SQLite Database', extensions: ['db'] },
+                { name: 'All Files', extensions: ['*'] }
+            ]
+        });
+
+        if (!result.canceled && result.filePath) {
+            return result.filePath;
+        }
+        return null;
+    });
 
     // Basic CRUD operations
     ipcMain.handle(TRANSACTION_CHANNELS.ADD_TRANSACTION, (_, transaction: Transaction) => {
@@ -78,4 +138,6 @@ export function addTransactionEventListeners() {
     ipcMain.handle(TRANSACTION_CHANNELS.BACKUP_DATABASE, (_, backupPath: string) => {
         return db.backup(backupPath);
     });
+
+    listenersRegistered = true;
 }

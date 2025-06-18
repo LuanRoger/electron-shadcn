@@ -17,6 +17,12 @@ export function useTransactionDB() {
         setLoading(true);
         setError(null);
         try {
+            // Check if database is loaded before operation
+            const isLoaded = await window.transactionDB.isDatabaseLoaded();
+            if (!isLoaded) {
+                throw new Error('No database loaded. Please load a database file first.');
+            }
+
             const result = await operation();
             onSuccess?.(result);
             return result;

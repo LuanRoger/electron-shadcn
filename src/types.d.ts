@@ -64,6 +64,15 @@ interface TransactionDBContext {
 
   // Database operations
   backupDatabase: (backupPath: string) => Promise<boolean>;
+
+  // Database file operations
+  loadDatabase: (filePath: string) => Promise<boolean>;
+  createDatabase: (filePath: string) => Promise<boolean>;
+  closeDatabase: () => Promise<boolean>;
+  isDatabaseLoaded: () => Promise<boolean>;
+  getDatabasePath: () => Promise<string | null>;
+  selectDatabaseFile: () => Promise<string | null>;
+  saveDatabaseFile: () => Promise<string | null>;
 }
 
 declare interface Window {

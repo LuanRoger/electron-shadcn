@@ -60,5 +60,27 @@ export function exposeTransactionContext() {
         // Database operations
         backupDatabase: (backupPath: string) =>
             ipcRenderer.invoke(TRANSACTION_CHANNELS.BACKUP_DATABASE, backupPath),
+
+        // Database file operations
+        loadDatabase: (filePath: string) =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.LOAD_DATABASE, filePath),
+
+        createDatabase: (filePath: string) =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.CREATE_DATABASE, filePath),
+
+        closeDatabase: () =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.CLOSE_DATABASE),
+
+        isDatabaseLoaded: () =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.IS_DATABASE_LOADED),
+
+        getDatabasePath: () =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.GET_DATABASE_PATH),
+
+        selectDatabaseFile: () =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.SELECT_DATABASE_FILE),
+
+        saveDatabaseFile: () =>
+            ipcRenderer.invoke(TRANSACTION_CHANNELS.SAVE_DATABASE_FILE),
     });
 }
