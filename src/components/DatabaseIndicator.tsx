@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from './ui/button';
-import { DatabaseIcon, FolderOpenIcon, XIcon } from 'lucide-react';
+import { DatabaseIcon, XIcon } from 'lucide-react';
 import { useDatabaseLoader } from '../hooks/useDatabaseLoader';
 
 export function DatabaseIndicator() {
     const { isLoaded, currentPath, closeDatabase } = useDatabaseLoader();
-    const [showFullPath, setShowFullPath] = useState(false);
 
     if (!isLoaded || !currentPath) {
         return null;
     }
 
     const fileName = currentPath.split('/').pop() || currentPath;
-    const displayPath = showFullPath ? currentPath : fileName;
+    const displayPath = fileName;
 
     const handleCloseDatabase = async () => {
         const success = await closeDatabase();
@@ -23,11 +22,11 @@ export function DatabaseIndicator() {
     };
 
     return (
-        <div className="flex items-center gap-2 px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm">
+        <div className="flex justify-between items-center gap-2 px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm">
             <DatabaseIcon className="h-4 w-4 text-green-600 dark:text-green-400" />
             <span
-                className="cursor-pointer hover:underline max-w-48 truncate"
-                onClick={() => setShowFullPath(!showFullPath)}
+                className="max-w-48 truncate"
+                // onClick={() => setShowFullPath(!showFullPath)}
                 title={currentPath}
             >
                 {displayPath}

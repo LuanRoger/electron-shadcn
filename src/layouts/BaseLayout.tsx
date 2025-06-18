@@ -1,6 +1,6 @@
 import React from "react";
 import DragWindowRegion from "@/components/DragWindowRegion";
-import NavigationMenu from "@/components/template/NavigationMenu";
+import { SidebarLayout } from "@/components/template/SidebarNavigation";
 
 export default function BaseLayout({
   children,
@@ -9,9 +9,10 @@ export default function BaseLayout({
 }) {
   return (
     <>
-      <DragWindowRegion title="Expenses" />
-      <NavigationMenu />
-      <main className="h-screen pb-20 p-2">{children}</main>
+      {/* <DragWindowRegion title="Expenses" /> */}
+      <SidebarLayout>
+        {children}
+      </SidebarLayout>
     </>
   );
 }

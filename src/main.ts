@@ -23,7 +23,7 @@ function createWindow() {
 
       preload: preload,
     },
-    titleBarStyle: 'hidden',
+    // titleBarStyle: 'hidden',
     // expose window controls in Windows/Linux
     ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {})
   });
