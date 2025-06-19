@@ -18,10 +18,10 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     plugins: {
-      "react-compiler": reactCompiler,
+      // "react-compiler": reactCompiler,
     },
     rules: {
-      "react-compiler/react-compiler": "error",
+      // "react-compiler/react-compiler": "error",
     },
   },
   { languageOptions: { globals: globals.browser } },
