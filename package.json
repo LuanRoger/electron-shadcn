@@ -53,7 +53,7 @@
     "eslint-plugin-react-compiler": "^19.1.0-rc.1",
     "globals": "^16.2.0",
     "jsdom": "^26.0.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4.1.7",
     "ts-node": "^10.9.2",
