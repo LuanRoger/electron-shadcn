@@ -19,8 +19,13 @@ export default function LangToggle() {
       value={currentLang}
     >
       {langs.map((lang) => (
-        <ToggleGroupItem key={lang.key} value={lang.key}>
-          {`${lang.prefix} ${lang.nativeName}`}
+        <ToggleGroupItem
+          key={lang.key}
+          value={lang.key}
+          variant="outline"
+          size="lg"
+        >
+          {`${lang.prefix}`}
         </ToggleGroupItem>
       ))}
     </ToggleGroup>

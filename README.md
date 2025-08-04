@@ -10,16 +10,15 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### Core 🏍️
 
-- [Electron 35](https://www.electronjs.org)
-- [Vite 6](https://vitejs.dev)
-- [SWC](https://swc.rs)
+- [Electron 37](https://www.electronjs.org)
+- [Vite 7](https://vitejs.dev)
 
 ### DX 🛠️
 
 - [TypeScript 5.8](https://www.typescriptlang.org)
 - [Prettier](https://prettier.io)
 - [ESLint 9](https://eslint.org)
-- [Zod](https://zod.dev)
+- [Zod 4](https://zod.dev)
 - [React Query (TanStack)](https://react-query.tanstack.com)
 
 ### UI 🎨
@@ -54,15 +53,6 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - Geist as default font
 - Some default styles was applied, check the [`styles`](https://github.com/LuanRoger/electron-shadcn/tree/main/src/styles) directory
 - React DevTools are installed by default
-
-> If you don't know some of these libraries or tools, I recommend you to check their documentation to understand how they work and how to use them.
-
-> [!WARNING]
-> Prefer to use the [`canary` release of `shadcn/ui`](https://ui.shadcn.com/docs/tailwind-v4) to avoid compatibility issues with React 19 and Tailwind v4.
-
-```bash
-npx shadcn@canary add button
-```
 
 ## Directory structure
 
