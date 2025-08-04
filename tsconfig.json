@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",
     "lib": ["dom", "ESNext"],
     "experimentalDecorators": true,
     "composite": true,
@@ -10,6 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": false,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "sourceMap": true,
     "strict": true,
@@ -18,8 +19,8 @@
       "@/*": ["./src/*"]
     },
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "./package.json", "./forge.config.ts"]
+  "include": ["src/**/*", "./package.json", "./forge.config.ts", "*.mts", "vite.renderer.config.mts"]
 }
