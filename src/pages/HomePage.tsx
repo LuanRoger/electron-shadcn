@@ -14,7 +14,10 @@ export default function HomePage() {
         <InitialIcons />
         <span>
           <h1 className="font-mono text-4xl font-bold">{t("appName")}</h1>
-          <p className="text-end text-sm uppercase text-muted-foreground" data-testid="pageTitle">
+          <p
+            className="text-muted-foreground text-end text-sm uppercase"
+            data-testid="pageTitle"
+          >
             {t("titleHomePage")}
           </p>
         </span>
