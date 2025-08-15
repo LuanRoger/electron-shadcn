@@ -24,7 +24,7 @@ function createWindow() {
       preload: preload,
     },
     titleBarStyle: process.platform === "darwin" ? "hiddenInset" : "hidden",
-    trafficLightPosition: process.platform === "darwin" ? { x: 20, y: 20 } : undefined,
+    trafficLightPosition: process.platform === "darwin" ? { x: 10, y: 10 } : undefined,
   });
   registerListeners(mainWindow);
 
