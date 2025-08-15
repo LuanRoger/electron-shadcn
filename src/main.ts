@@ -23,7 +23,8 @@ function createWindow() {
 
       preload: preload,
     },
-    titleBarStyle: "hidden",
+    titleBarStyle: process.platform === "darwin" ? "hiddenInset" : "hidden",
+    trafficLightPosition: process.platform === "darwin" ? { x: 20, y: 20 } : undefined,
   });
   registerListeners(mainWindow);
 

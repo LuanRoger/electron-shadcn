@@ -9,17 +9,20 @@ interface DragWindowRegionProps {
   title?: ReactNode;
 }
 
+// Check if running on macOS
+const isMacOS = typeof window !== "undefined" && window.navigator.platform.includes("Mac");
+
 export default function DragWindowRegion({ title }: DragWindowRegionProps) {
   return (
     <div className="flex w-screen items-stretch justify-between">
-      <div className="draglayer w-full">
+      <div className={`draglayer w-full ${isMacOS ? "pl-20" : ""}`}>
         {title && (
           <div className="flex flex-1 p-2 text-xs whitespace-nowrap text-gray-400 select-none">
             {title}
           </div>
         )}
       </div>
-      <WindowButtons />
+      {!isMacOS && <WindowButtons />}
     </div>
   );
 }
