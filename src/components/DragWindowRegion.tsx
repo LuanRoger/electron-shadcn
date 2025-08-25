@@ -3,6 +3,7 @@ import {
   maximizeWindow,
   minimizeWindow,
 } from "@/helpers/window_helpers";
+import { isMacOS } from "@/utils/platform";
 import React, { type ReactNode } from "react";
 
 interface DragWindowRegionProps {
@@ -13,13 +14,18 @@ export default function DragWindowRegion({ title }: DragWindowRegionProps) {
   return (
     <div className="flex w-screen items-stretch justify-between">
       <div className="draglayer w-full">
-        {title && (
+        {title && !isMacOS() && (
           <div className="flex flex-1 p-2 text-xs whitespace-nowrap text-gray-400 select-none">
             {title}
           </div>
         )}
+        {isMacOS() && (
+          <div className="flex flex-1 p-2">
+            {/* Maintain the same height but do not display content */}
+          </div>
+        )}
       </div>
-      <WindowButtons />
+      {!isMacOS() && <WindowButtons />}
     </div>
   );
 }
