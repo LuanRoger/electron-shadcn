@@ -70,7 +70,7 @@
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@tailwindcss/vite": "^4.1.11",
     "@tanstack/react-query": "^5.84.1",
-    "@tanstack/react-router": "^1.130.12",
+    "@tanstack/react-router": "^1.131.31",
     "@tanstack/router-devtools": "^1.131.27",
     "@vitejs/plugin-react": "^4.7.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-714736e-20250131",
