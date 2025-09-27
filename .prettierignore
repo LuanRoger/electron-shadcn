@@ -3,3 +3,4 @@
 /coverage
 /.vite
 README.md
+/src/routeTree.gen.ts

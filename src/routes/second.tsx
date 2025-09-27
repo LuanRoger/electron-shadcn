@@ -1,8 +1,9 @@
 import React from "react";
 import Footer from "@/components/template/Footer";
 import { useTranslation } from "react-i18next";
+import { createFileRoute } from "@tanstack/react-router";
 
-export default function SecondPage() {
+function SecondPage() {
   const { t } = useTranslation();
 
   return (
@@ -14,3 +15,7 @@ export default function SecondPage() {
     </div>
   );
 }
+
+export const Route = createFileRoute("/second")({
+  component: SecondPage,
+});
