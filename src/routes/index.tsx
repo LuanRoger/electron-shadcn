@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import LangToggle from "@/components/LangToggle";
 import Footer from "@/components/template/Footer";
 import InitialIcons from "@/components/template/InitialIcons";
+import { createFileRoute } from "@tanstack/react-router";
 
-export default function HomePage() {
+function HomePage() {
   const { t } = useTranslation();
 
   return (
@@ -28,3 +29,7 @@ export default function HomePage() {
     </div>
   );
 }
+
+export const Route = createFileRoute("/")({
+  component: HomePage,
+});
