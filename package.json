@@ -74,7 +74,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-router": "^1.132.41",
-    "@tanstack/react-router-devtools": "^1.132.11",
+    "@tanstack/react-router-devtools": "^1.132.41",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "electron-squirrel-startup": "^1.0.1",
