@@ -28,7 +28,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
 - [i18next](https://www.i18next.com)
-- [TanStack Router](https://tanstack.com/router)
+- [TanStack Router](https://tanstack.com/router) (with file based routing)
 - [Lucide](https://lucide.dev)
 
 ### Test 🧪
