@@ -99,6 +99,3 @@ out/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-
-# TanStack Router
-/src/routeTree.gen.ts

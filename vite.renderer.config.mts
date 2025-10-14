@@ -13,7 +13,7 @@ export default defineConfig({
     tailwindcss(),
     react({
       babel: {
-        plugins: [["babel-plugin-react-compiler"]],
+        plugins: ["babel-plugin-react-compiler"],
       },
     }),
   ],
