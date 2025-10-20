@@ -4,7 +4,7 @@ import {
   minimizeWindow,
 } from "@/helpers/window_helpers";
 import { isMacOS } from "@/utils/platform";
-import React, { type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 interface DragWindowRegionProps {
   title?: ReactNode;
