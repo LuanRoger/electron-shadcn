@@ -1,4 +1,3 @@
-import React from "react";
 import { SiElectron, SiReact, SiVite } from "@icons-pack/react-simple-icons";
 
 export default function InitalIcons() {
