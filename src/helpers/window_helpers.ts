@@ -1,9 +1,11 @@
+import { ipc } from "./ipc/manager";
+
 export async function minimizeWindow() {
-  await window.electronWindow.minimize();
+  await ipc.client.window.minimizeWindow();
 }
 export async function maximizeWindow() {
-  await window.electronWindow.maximize();
+  await ipc.client.window.maximizeWindow();
 }
 export async function closeWindow() {
-  await window.electronWindow.close();
+  await ipc.client.window.closeWindow();
 }
