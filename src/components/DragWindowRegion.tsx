@@ -1,8 +1,4 @@
-import {
-  closeWindow,
-  maximizeWindow,
-  minimizeWindow,
-} from "@/actions/window";
+import { closeWindow, maximizeWindow, minimizeWindow } from "@/actions/window";
 import { isMacOS } from "@/utils/platform";
 import { type ReactNode } from "react";
 

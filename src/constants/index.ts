@@ -5,4 +5,4 @@ export const LOCAL_STORAGE_KEYS = {
 
 export const IPC_CHANNELS = {
   START_ORPC_SERVER: "start-orpc-server",
-}
+};
