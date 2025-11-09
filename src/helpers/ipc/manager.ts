@@ -10,6 +10,7 @@ class IPCManager {
   private readonly serverPort: MessagePort;
 
   private readonly rpcLink: RPCLink<ClientContext>;
+
   public readonly client: RPCClient;
 
   private initialized: boolean = false;
