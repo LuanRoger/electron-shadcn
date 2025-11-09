@@ -1,14 +1,15 @@
 import { ThemeMode } from "@/types/theme-mode";
-
-const THEME_KEY = "theme";
+import { ipc } from "./ipc/manager";
 
 export interface ThemePreferences {
   system: ThemeMode;
   local: ThemeMode | null;
 }
 
+const THEME_KEY = "theme";
+
 export async function getCurrentTheme(): Promise<ThemePreferences> {
-  const currentTheme = await window.themeMode.current();
+  const currentTheme = await ipc.client.theme.getCurrentThemeMode();
   const localTheme = localStorage.getItem(THEME_KEY) as ThemeMode | null;
 
   return {
@@ -18,34 +19,19 @@ export async function getCurrentTheme(): Promise<ThemePreferences> {
 }
 
 export async function setTheme(newTheme: ThemeMode) {
-  switch (newTheme) {
-    case "dark":
-      await window.themeMode.dark();
-      updateDocumentTheme(true);
-      break;
-    case "light":
-      await window.themeMode.light();
-      updateDocumentTheme(false);
-      break;
-    case "system": {
-      const isDarkMode = await window.themeMode.system();
-      updateDocumentTheme(isDarkMode);
-      break;
-    }
-  }
-
+  await ipc.client.theme.setThemeMode(newTheme);
   localStorage.setItem(THEME_KEY, newTheme);
 }
 
 export async function toggleTheme() {
-  const isDarkMode = await window.themeMode.toggle();
+  const isDarkMode = await ipc.client.theme.toggleThemeMode();
   const newTheme = isDarkMode ? "dark" : "light";
 
   updateDocumentTheme(isDarkMode);
   localStorage.setItem(THEME_KEY, newTheme);
 }
 
-export async function syncThemeWithLocal() {
+export async function syncWithLocalTheme() {
   const { local } = await getCurrentTheme();
   if (!local) {
     setTheme("system");
@@ -56,9 +42,9 @@ export async function syncThemeWithLocal() {
 }
 
 function updateDocumentTheme(isDarkMode: boolean) {
-  if (!isDarkMode) {
-    document.documentElement.classList.remove("dark");
-  } else {
+  if (isDarkMode) {
     document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
   }
 }
