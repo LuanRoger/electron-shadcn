@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { syncThemeWithLocal } from "./helpers/theme_helpers";
+import { syncWithLocalTheme } from "./helpers/theme_helpers";
 import { useTranslation } from "react-i18next";
 import { updateAppLanguage } from "./helpers/language_helpers";
 import { RouterProvider } from "@tanstack/react-router";
@@ -11,7 +11,7 @@ export default function App() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    syncThemeWithLocal();
+    syncWithLocalTheme();
     updateAppLanguage(i18n);
   }, [i18n]);
 
