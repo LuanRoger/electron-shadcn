@@ -2,7 +2,7 @@ import {
   closeWindow,
   maximizeWindow,
   minimizeWindow,
-} from "@/helpers/window_helpers";
+} from "@/actions/window";
 import { isMacOS } from "@/utils/platform";
 import { type ReactNode } from "react";
 

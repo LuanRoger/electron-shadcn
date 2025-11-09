@@ -7,7 +7,8 @@ import {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
 import { ipcMain } from "electron/main";
-import { ipcContext } from "@/helpers/ipc/context";
+import { ipcContext } from "@/ipc/context";
+import { IPC_CHANNELS } from "./constants";
 
 const inDevelopment = process.env.NODE_ENV === "development";
 
@@ -49,9 +50,9 @@ async function installExtensions() {
 }
 
 async function setupORPC() {
-  const { rpcHandler } = await import("./helpers/ipc/handler");
+  const { rpcHandler } = await import("./ipc/handler");
 
-  ipcMain.on("start-orpc-server", (event) => {
+  ipcMain.on(IPC_CHANNELS.START_ORPC_SERVER, (event) => {
     const [serverPort] = event.ports;
 
     serverPort.start();

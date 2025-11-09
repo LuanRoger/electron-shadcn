@@ -1,4 +1,4 @@
-import { ipc } from "./ipc/manager";
+import { ipc } from "../ipc/manager";
 
 export async function minimizeWindow() {
   await ipc.client.window.minimizeWindow();
