@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from "electron";
-import registerListeners from "./helpers/ipc/listeners-register";
 // "electron-squirrel-startup" seems broken when packaging with vite
 //import started from "electron-squirrel-startup";
 import path from "path";
@@ -7,6 +6,9 @@ import {
   installExtension,
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
+import { ipcMain } from "electron/main";
+import { ipcContext } from "@/ipc/context";
+import { IPC_CHANNELS } from "./constants";
 
 const inDevelopment = process.env.NODE_ENV === "development";
 
@@ -27,7 +29,7 @@ function createWindow() {
     trafficLightPosition:
       process.platform === "darwin" ? { x: 5, y: 5 } : undefined,
   });
-  registerListeners(mainWindow);
+  ipcContext.setMainWindow(mainWindow);
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
@@ -47,7 +49,18 @@ async function installExtensions() {
   }
 }
 
-app.whenReady().then(createWindow).then(installExtensions);
+async function setupORPC() {
+  const { rpcHandler } = await import("./ipc/handler");
+
+  ipcMain.on(IPC_CHANNELS.START_ORPC_SERVER, (event) => {
+    const [serverPort] = event.ports;
+
+    serverPort.start();
+    rpcHandler.upgrade(serverPort);
+  });
+}
+
+app.whenReady().then(createWindow).then(installExtensions).then(setupORPC);
 
 //osX only
 app.on("window-all-closed", () => {

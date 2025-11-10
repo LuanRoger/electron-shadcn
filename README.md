@@ -16,6 +16,7 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 ### DX 🛠️
 
 - [TypeScript 5.9](https://www.typescriptlang.org)
+- [oRPC](https://orpc.unnoq.com)
 - [Prettier](https://prettier.io)
 - [ESLint 9](https://eslint.org)
 - [Zod 4](https://zod.dev)
@@ -57,35 +58,41 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 ## Directory structure
 
 ```plaintext
-.
-└── ./src/
-    ├── ./src/assets/
-    │   └── ./src/assets/fonts/
-    ├── ./src/components/
-    │   ├── ./src/components/template
-    │   └── ./src/components/ui/
-    ├── ./src/helpers/
-    │   └── ./src/helpers/ipc/
-    ├── ./src/layout/
-    ├── ./src/lib/
-    ├── ./src/pages/
-    ├── ./src/style/
-    └── ./src/tests/
+src/
+├── actions
+├── assets
+├── components/
+│   ├── template
+│   └── ui
+├── constants
+├── ipc/
+│   ├── theme
+│   └── window
+├── layouts
+├── localization
+├── routes
+├── styles
+├── tests
+├── types
+└── utils
 ```
 
+### Main directories
+
+Here is a brief description of the main directories:
+
 - `src/`: Main directory
-  - `assets/`: Store assets like images, fonts, etc.
-  - `components/`: Store UI components
-    - `template/`: Store the all not important components used by the template. It doesn't include the `WindowRegion` or the theme toggler, if you want to start an empty project, you can safely delete this directory.
-    - `ui/`: Store Shadcn UI components (this is the default direcotry used by Shadcn UI)
-  - `helpers/`: Store IPC related functions to be called in the renderer process
-    - `ipc/`: Directory to store IPC context and listener functions
-      - Some implementations are already done, like `theme` and `window` for the custom title bar
-  - `layout/`: Directory to store layout components
-  - `lib/`: Store libraries and other utilities
-  - `pages/`: Store app's pages
-  - `style/`: Store global styles
-  - `tests/`: Store tests (from Vitest and Playwright)
+  - `actions`: Functions that will call IPC functions via oRPC (it's mostly act as a bridge between the renderer process and the main process)
+  - `assets/`: Assets like images, fonts, etc.
+  - `components/`: UI components
+    - `template/`: Stores all not important components used by the template. It doesn't include the `WindowRegion` or the theme toggler, if you want to start an empty project, you can safely delete this directory.
+    - `ui/`: Stores shadcn-ui components (this is the default directory used by shadcn-ui)
+  - `ipc/`: Stores the configuration of the IPC communication using [oRPC](https://orpc.unnoq.com) for type-safety communication. Also have the handlers for the main process.
+  - `layout/`: Layouts for the pages
+  - `localization/`: i18next configuration and translation files.
+  - `routes/`: TanStack Router's root configuration, route definitions and pages.
+  - `style/`: Global styles
+  - `tests/`: Stores tests (from Vitest and Playwright)
 
 ## NPM script
 
