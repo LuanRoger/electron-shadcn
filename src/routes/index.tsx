@@ -1,6 +1,6 @@
-import ToggleTheme from "@/components/ToggleTheme";
+import ToggleTheme from "@/components/toggle-theme";
 import { useTranslation } from "react-i18next";
-import LangToggle from "@/components/LangToggle";
+import LangToggle from "@/components/lang-toggle";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiElectron, SiReact, SiVite } from "@icons-pack/react-simple-icons";
 import NavigationMenu from "@/components/navigation-menu";
