@@ -62,7 +62,6 @@ src/
 ├── actions
 ├── assets
 ├── components/
-│   ├── template
 │   └── ui
 ├── constants
 ├── ipc/
@@ -85,7 +84,6 @@ Here is a brief description of the main directories:
   - `actions`: Functions that will call IPC functions via oRPC (it's mostly act as a bridge between the renderer process and the main process)
   - `assets/`: Assets like images, fonts, etc.
   - `components/`: UI components
-    - `template/`: Stores all not important components used by the template. It doesn't include the `WindowRegion` or the theme toggler, if you want to start an empty project, you can safely delete this directory.
     - `ui/`: Stores shadcn-ui components (this is the default directory used by shadcn-ui)
   - `ipc/`: Stores the configuration of the IPC communication using [oRPC](https://orpc.unnoq.com) for type-safety communication. Also have the handlers for the main process.
   - `layout/`: Layouts for the pages
@@ -138,6 +136,10 @@ npm install
 ```bash
 npm run start
 ```
+
+Now you can go directly to `/src/routes/index.tsx` and modify the app as you want.
+
+> You can also delete the `/src/routes/second.tsx` file if you don't want a second page.
 
 ## Used by
 
