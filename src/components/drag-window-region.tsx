@@ -1,27 +1,51 @@
+import { getPlatform } from "@/actions/platform";
 import { closeWindow, maximizeWindow, minimizeWindow } from "@/actions/window";
-import { isMacOS } from "@/utils/platform";
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 interface DragWindowRegionProps {
   title?: ReactNode;
 }
 
 export default function DragWindowRegion({ title }: DragWindowRegionProps) {
+  const [platform, setPlatform] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    getPlatform()
+      .then((value) => {
+        if (!active) {
+          return;
+        }
+
+        setPlatform(value);
+      })
+      .catch((error) => {
+        console.error("Failed to detect platform", error);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const isMacOS = platform === "darwin";
+
   return (
     <div className="flex w-screen items-stretch justify-between">
       <div className="draglayer w-full">
-        {title && !isMacOS() && (
+        {title && !isMacOS && (
           <div className="flex flex-1 p-2 text-xs whitespace-nowrap text-gray-400 select-none">
             {title}
           </div>
         )}
-        {isMacOS() && (
+        {isMacOS && (
           <div className="flex flex-1 p-2">
             {/* Maintain the same height but do not display content */}
           </div>
         )}
       </div>
-      {!isMacOS() && <WindowButtons />}
+      {!isMacOS && <WindowButtons />}
     </div>
   );
 }
