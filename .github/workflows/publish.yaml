@@ -2,9 +2,6 @@ name: Publish Release
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - "v*.*.*"
 
 jobs:
   publish-release:
@@ -18,7 +15,7 @@ jobs:
       - name: Install Node and NPM
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Install and build

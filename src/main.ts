@@ -1,6 +1,4 @@
 import { app, BrowserWindow } from "electron";
-// "electron-squirrel-startup" seems broken when packaging with vite
-//import started from "electron-squirrel-startup";
 import path from "path";
 import {
   installExtension,
@@ -9,6 +7,7 @@ import {
 import { ipcMain } from "electron/main";
 import { ipcContext } from "@/ipc/context";
 import { IPC_CHANNELS } from "./constants";
+import { updateElectronApp, UpdateSourceType } from "update-electron-app";
 
 const inDevelopment = process.env.NODE_ENV === "development";
 
@@ -49,6 +48,15 @@ async function installExtensions() {
   }
 }
 
+function checkForUpdates() {
+  updateElectronApp({
+    updateSource: {
+      type: UpdateSourceType.ElectronPublicUpdateService,
+      repo: "LuanRoger/electron-shadcn",
+    },
+  });
+}
+
 async function setupORPC() {
   const { rpcHandler } = await import("./ipc/handler");
 
@@ -60,7 +68,12 @@ async function setupORPC() {
   });
 }
 
-app.whenReady().then(createWindow).then(installExtensions).then(setupORPC);
+app
+  .whenReady()
+  .then(createWindow)
+  .then(installExtensions)
+  .then(checkForUpdates)
+  .then(setupORPC);
 
 //osX only
 app.on("window-all-closed", () => {

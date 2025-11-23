@@ -4,14 +4,25 @@ import LangToggle from "@/components/lang-toggle";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiElectron, SiReact, SiVite } from "@icons-pack/react-simple-icons";
 import NavigationMenu from "@/components/navigation-menu";
+import { getAppVersion } from "@/actions/app";
+import { useEffect, useState, useTransition } from "react";
 
 /*
  * Update this page to modify your home page.
+ * You can delete this file component to start from a blank page.
  */
 
 function HomePage() {
   const iconSize = 48;
+
+  const [appVersion, setAppVersion] = useState("0.0.0");
+  const [, startGetAppVersion] = useTransition();
   const { t } = useTranslation();
+
+  useEffect(
+    () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
+    [],
+  );
 
   return (
     <>
@@ -35,9 +46,9 @@ function HomePage() {
           <LangToggle />
           <ToggleTheme />
         </div>
-        <footer className="font-tomorrow text-muted-foreground inline-flex justify-between text-[0.7rem] uppercase">
+        <footer className="font-tomorrow text-muted-foreground flex justify-between text-[0.7rem] uppercase">
           <p>Made by LuanRoger - Based in Brazil 🇧🇷</p>
-          <p>Powered by Electron</p>
+          <p>Version: {appVersion}</p>
         </footer>
       </div>
     </>
