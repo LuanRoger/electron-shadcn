@@ -1,4 +1,4 @@
-import { getPlatform } from "@/actions/platform";
+import { getPlatform } from "@/actions/app";
 import { closeWindow, maximizeWindow, minimizeWindow } from "@/actions/window";
 import { type ReactNode, useEffect, useState } from "react";
 
