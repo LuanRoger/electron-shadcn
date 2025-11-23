@@ -23,6 +23,8 @@ jobs:
 
       - name: Install and build
         run: npm ci
-        
+
       - name: Publish Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run publish
