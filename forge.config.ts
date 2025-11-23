@@ -6,7 +6,6 @@ import { MakerRpm } from "@electron-forge/maker-rpm";
 import { VitePlugin } from "@electron-forge/plugin-vite";
 import { FusesPlugin } from "@electron-forge/plugin-fuses";
 import { FuseV1Options, FuseVersion } from "@electron/fuses";
-import { ReceiptPoundSterling } from "lucide-react";
 
 const config: ForgeConfig = {
   packagerConfig: {
@@ -19,17 +18,23 @@ const config: ForgeConfig = {
     new MakerRpm({}),
     new MakerDeb({}),
   ],
-  publishers: [{
-    name: "@electron-forge/publisher-github",
-    config: {
-      repository: {
-        owner: "LuanRoger",
-        name: "electron-shadcn",
+  publishers: [
+    {
+      /*
+       * Publish release on GitHub as draft.
+       * Remember to manually publish it on GitHub website after verifying everything is correct.
+       */
+      name: "@electron-forge/publisher-github",
+      config: {
+        repository: {
+          owner: "LuanRoger",
+          name: "electron-shadcn",
+        },
+        draft: true,
+        prerelease: false,
       },
-      draft: true,
-      prerelease: false,
-    }
-  }],
+    },
+  ],
   plugins: [
     new VitePlugin({
       build: [
