@@ -1,0 +1,28 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish-release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v6
+
+      - name: Install Node and NPM
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install and build
+        run: npm ci
+        
+      - name: Publish Release
+        run: npm run publish
