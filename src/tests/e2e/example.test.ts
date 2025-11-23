@@ -44,7 +44,7 @@ test("renders the first page", async () => {
 
 test("renders page name", async () => {
   const page: Page = await electronApp.firstWindow();
-  
+
   await page.waitForSelector("h1");
   const pageName = page.getByTestId("pageTitle");
   const text = await pageName.textContent();
