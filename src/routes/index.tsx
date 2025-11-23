@@ -5,16 +5,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiElectron, SiReact, SiVite } from "@icons-pack/react-simple-icons";
 import NavigationMenu from "@/components/navigation-menu";
 import { getAppVersion } from "@/actions/app";
+import { useEffect, useState, useTransition } from "react";
 
 /*
  * Update this page to modify your home page.
+ * You can delete this file component to start from a blank page.
  */
 
 function HomePage() {
   const iconSize = 48;
-  const appVersion = getAppVersion();
 
+  const [appVersion, setAppVersion] = useState("0.0.0");
+  const [, startGetAppVersion] = useTransition();
   const { t } = useTranslation();
+
+  useEffect(
+    () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
+    [],
+  );
 
   return (
     <>
