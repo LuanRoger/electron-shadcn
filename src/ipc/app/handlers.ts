@@ -7,4 +7,4 @@ export const currentPlatfom = os.handler(() => {
 
 export const appVersion = os.handler(() => {
   return app.getVersion();
-})
+});

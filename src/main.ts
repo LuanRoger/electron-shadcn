@@ -51,9 +51,9 @@ async function installExtensions() {
 function checkForUpdates() {
   updateElectronApp({
     updateSource: {
-        type: UpdateSourceType.ElectronPublicUpdateService,
-        repo: 'LuanRoger/electron-shadcn',
-      },
+      type: UpdateSourceType.ElectronPublicUpdateService,
+      repo: "LuanRoger/electron-shadcn",
+    },
   });
 }
 
