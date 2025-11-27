@@ -141,6 +141,60 @@ Now you can go directly to `/src/routes/index.tsx` and modify the app as you wan
 
 > You can also delete the `/src/routes/second.tsx` file if you don't want a second page.
 
+## Auto update
+
+> [!WARNING]
+> This feature only work in open-source repositories in GitHub, if you need to use in a private repository, you need to setup a custom update server. Check the [Updating Applications](https://www.electronjs.org/docs/latest/tutorial/updates) section in the Electron documentation for more details.
+
+The auto update uses GitHub Releases as source for the updates. The `publish` script will automatically create a new release with the version specified in your `package.json` file. You can run locally the `publish` script to create a new release, but you need to set the `GITHUB_TOKEN` environment variable with a GitHub Personal Access Token that has permission to create releases in your repository.
+
+You can also use the GitHub Actions workflow to automatically create a new release when you push a new tag to the repository. The workflow need to be triggered manually, but you can modify to fit your needs. Also, the release is created as draft by default, so you can review and set a proper description before publish.
+
+> Check the [`.github/workflows/publish.yml`](https://github.com/LuanRoger/electron-shadcn/blob/main/.github/workflows/publish.yaml) file for more details.
+
+When you open the app, it will check for updates automatically. If an update is available, it will download and install the update, after that, it will restart the app to apply the update. This ensure  that your users always have the latest version of your app.
+
+The auto update is implemented using [update-electron-app](https://github.com/electron/update-electron-app) to check the updates and apply them. For the publishing, it is using the [Electron Forge's GitHub publisher](https://www.electronforge.io/config/publishers/github).
+
+### Configuration
+
+1. In the `forge.config.ts` file, set the repository information in the `publishers` section:
+
+```ts
+//...
+publishers: [
+    {
+      name: "@electron-forge/publisher-github",
+      config: {
+        repository: {
+          owner: "username", // Your GitHub username
+          name: "repository-name", // Your repository name
+        },
+        draft: true,
+        prerelease: false,
+      },
+    },
+  ],
+//...
+```
+
+2. In the `src/main/index.ts` file, set the `repo` in the `updateElectronApp` function, this will point to your repository where the app will check for updates:
+
+```ts
+function checkForUpdates() {
+  updateElectronApp({
+    updateSource: {
+      type: UpdateSourceType.ElectronPublicUpdateService,
+      repo: "username/repository-name",
+    },
+  });
+}
+```
+
+3. That's it! Now your app is configured to use auto update.
+
+You can publish a new release by running the `publish` script or triggering the `Publish Release` GitHub Actions workflow.
+
 ## Used by
 
 - [yaste](https://github.com/LuanRoger/yaste) - yaste (Yet another super ₛᵢₘₚₗₑ text editor) is a text editor, that can be used as an alternative to the native text editor of your SO, maybe.
