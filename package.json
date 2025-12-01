@@ -64,7 +64,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.4",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.14"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.8.0",
