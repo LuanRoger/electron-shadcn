@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { createFileRoute } from "@tanstack/react-router";
 import NavigationMenu from "@/components/navigation-menu";
+import { useEffect, useState, useTransition } from "react";
+import { getAppVersion } from "@/actions/app";
 
 /*
  * You can delete this page or modify it to your needs.
@@ -9,6 +11,13 @@ import NavigationMenu from "@/components/navigation-menu";
 
 function SecondPage() {
   const { t } = useTranslation();
+  const [appVersion, setAppVersion] = useState("0.0.0");
+    const [, startGetAppVersion] = useTransition();
+
+  useEffect(
+      () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
+      [],
+    );
 
   return (
     <>
@@ -19,7 +28,7 @@ function SecondPage() {
         </div>
         <footer className="font-tomorrow text-muted-foreground inline-flex justify-between text-[0.7rem] uppercase">
           <p>Made by LuanRoger - Based in Brazil 🇧🇷</p>
-          <p>Powered by Electron</p>
+          <p>Version: {appVersion}</p>
         </footer>
       </div>
     </>
