@@ -29,9 +29,11 @@ function SecondPage() {
         </div>
         <footer className="font-tomorrow text-muted-foreground inline-flex justify-between text-[0.7rem] uppercase">
           <ExternalLink href="https://github.com/LuanRoger">
-                      {t("madeBy")}
-                    </ExternalLink>
-          <p>{t("version")}: v{appVersion}</p>
+            {t("madeBy")}
+          </ExternalLink>
+          <p>
+            {t("version")}: v{appVersion}
+          </p>
         </footer>
       </div>
     </>

@@ -51,7 +51,9 @@ function HomePage() {
           <ExternalLink href="https://github.com/LuanRoger">
             {t("madeBy")}
           </ExternalLink>
-          <p>{t("version")}: v{appVersion}</p>
+          <p>
+            {t("version")}: v{appVersion}
+          </p>
         </footer>
       </div>
     </>

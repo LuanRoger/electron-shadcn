@@ -11,7 +11,7 @@ i18n.use(initReactI18next).init({
         titleSecondPage: "Second Page",
         documentation: "Documentation",
         version: "Version",
-        madeBy: "Made by LuanRoger"
+        madeBy: "Made by LuanRoger",
       },
     },
     "pt-BR": {
@@ -21,7 +21,7 @@ i18n.use(initReactI18next).init({
         titleSecondPage: "Segunda Página",
         documentation: "Documentação",
         version: "Versão",
-        madeBy: "Feito por LuanRoger"
+        madeBy: "Feito por LuanRoger",
       },
     },
   },
