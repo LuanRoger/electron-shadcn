@@ -6,6 +6,7 @@ import { SiElectron, SiReact, SiVite } from "@icons-pack/react-simple-icons";
 import NavigationMenu from "@/components/navigation-menu";
 import { getAppVersion } from "@/actions/app";
 import { useEffect, useState, useTransition } from "react";
+import Link from "@/components/link";
 
 /*
  * Update this page to modify your home page.
@@ -47,8 +48,10 @@ function HomePage() {
           <ToggleTheme />
         </div>
         <footer className="font-tomorrow text-muted-foreground flex justify-between text-[0.7rem] uppercase">
-          <p>Made by LuanRoger - Based in Brazil 🇧🇷</p>
-          <p>Version: {appVersion}</p>
+          <Link href="https://github.com/LuanRoger">
+            {t("madeBy")}
+          </Link>
+          <p>{t("version")}: v{appVersion}</p>
         </footer>
       </div>
     </>

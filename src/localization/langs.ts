@@ -11,4 +11,4 @@ export default [
     nativeName: "Português (Brasil)",
     prefix: "PT-BR",
   },
-] satisfies Language[];
+] as const satisfies Language[];

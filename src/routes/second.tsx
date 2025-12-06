@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import NavigationMenu from "@/components/navigation-menu";
 import { useEffect, useState, useTransition } from "react";
 import { getAppVersion } from "@/actions/app";
+import Link from "@/components/link";
 
 /*
  * You can delete this page or modify it to your needs.
@@ -27,8 +28,10 @@ function SecondPage() {
           <h1 className="text-4xl font-bold">{t("titleSecondPage")}</h1>
         </div>
         <footer className="font-tomorrow text-muted-foreground inline-flex justify-between text-[0.7rem] uppercase">
-          <p>Made by LuanRoger - Based in Brazil 🇧🇷</p>
-          <p>Version: {appVersion}</p>
+          <Link href="https://github.com/LuanRoger">
+                      {t("madeBy")}
+                    </Link>
+          <p>{t("version")}: v{appVersion}</p>
         </footer>
       </div>
     </>
