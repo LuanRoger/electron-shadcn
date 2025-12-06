@@ -12,12 +12,12 @@ import { getAppVersion } from "@/actions/app";
 function SecondPage() {
   const { t } = useTranslation();
   const [appVersion, setAppVersion] = useState("0.0.0");
-    const [, startGetAppVersion] = useTransition();
+  const [, startGetAppVersion] = useTransition();
 
   useEffect(
-      () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
-      [],
-    );
+    () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
+    [],
+  );
 
   return (
     <>
