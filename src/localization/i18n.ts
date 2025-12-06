@@ -9,7 +9,7 @@ i18n.use(initReactI18next).init({
         appName: "electron-shadcn",
         titleHomePage: "Home Page",
         titleSecondPage: "Second Page",
-        documetation: "Documentation",
+        documentation: "Documentation",
         version: "Version",
         madeBy: "Made by LuanRoger"
       },
@@ -19,7 +19,7 @@ i18n.use(initReactI18next).init({
         appName: "electron-shadcn",
         titleHomePage: "Página Inicial",
         titleSecondPage: "Segunda Página",
-        documetation: "Documentação",
+        documentation: "Documentação",
         version: "Versão",
         madeBy: "Feito por LuanRoger"
       },
