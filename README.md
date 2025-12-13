@@ -2,7 +2,7 @@
 
 Electron in all its glory. Everything you will need to develop your beautiful desktop application.
 
-![Demo GIF](https://github.com/LuanRoger/electron-shadcn/blob/main/images/demo.gif)
+![Demo GIF](https://github.com/LuanRoger/electron-shadcn/blob/main/images/demo.png)
 
 ## Libs and tools
 
