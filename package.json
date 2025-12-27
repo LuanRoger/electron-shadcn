@@ -85,7 +85,7 @@
     "electron-squirrel-startup": "^1.0.1",
     "i18next": "^25.7.3",
     "lucide-react": "^0.559.0",
-    "react": "^19.2.1",
+    "react": "^19.2.3",
     "react-dom": "^19.2.1",
     "react-i18next": "^16.4.1",
     "tailwind-merge": "^3.4.0",
