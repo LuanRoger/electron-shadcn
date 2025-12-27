@@ -83,7 +83,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "electron-squirrel-startup": "^1.0.1",
-    "i18next": "^25.7.2",
+    "i18next": "^25.7.3",
     "lucide-react": "^0.559.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
