@@ -37,7 +37,7 @@
     "@eslint/compat": "^2.0.0",
     "@eslint/js": "^9.39.0",
     "@playwright/test": "^1.57.0",
-    "@tanstack/router-plugin": "^1.140.1",
+    "@tanstack/router-plugin": "^1.142.8",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
