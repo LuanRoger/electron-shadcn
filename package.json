@@ -70,6 +70,8 @@
     "vitest": "^4.0.15"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
     "@icons-pack/react-simple-icons": "^13.8.0",
     "@orpc/client": "^1.10.4",
     "@orpc/server": "^1.12.2",
@@ -90,6 +92,7 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-i18next": "^16.4.1",
+    "shadcn": "^3.6.2",
     "tailwind-merge": "^3.4.0",
     "update-electron-app": "^3.1.2",
     "zod": "^4.2.0"
