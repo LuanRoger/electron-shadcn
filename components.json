@@ -1,6 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "style": "radix-mira",
+  "menuColor": "default",
+  "menuAccent": "subtle",
   "rsc": false,
   "tsx": true,
   "tailwind": {
@@ -14,6 +16,7 @@
     "components": "@/components",
     "utils": "@/utils/tailwind",
     "ui": "@/components/ui",
+    "lib": "@/lib",
     "hooks": "@/hooks"
   },
   "iconLibrary": "lucide"
