@@ -123,9 +123,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground overflow-hidden font-sans;
   }
   html {
     @apply font-sans;
+  }
+
+  .draglayer {
+    -webkit-app-region: drag;
   }
 }
