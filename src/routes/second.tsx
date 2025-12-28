@@ -1,9 +1,5 @@
-import { useTranslation } from "react-i18next";
 import { createFileRoute } from "@tanstack/react-router";
 import NavigationMenu from "@/components/navigation-menu";
-import { useEffect, useState, useTransition } from "react";
-import { getAppVersion } from "@/actions/app";
-import ExternalLink from "@/components/external-link";
 
 /*
  * You can delete this page or modify it to your needs.
@@ -11,15 +7,6 @@ import ExternalLink from "@/components/external-link";
  */
 
 function SecondPage() {
-  const { t } = useTranslation();
-  const [appVersion, setAppVersion] = useState("0.0.0");
-  const [, startGetAppVersion] = useTransition();
-
-  useEffect(
-    () => startGetAppVersion(() => getAppVersion().then(setAppVersion)),
-    [],
-  );
-
   return (
     <>
       <NavigationMenu />
