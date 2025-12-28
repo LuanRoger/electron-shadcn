@@ -28,33 +28,30 @@ function HomePage() {
   return (
     <>
       <NavigationMenu />
-      <div className="flex h-full flex-col">
-        <div className="flex flex-1 flex-col items-center justify-center gap-2">
+      <div className="flex h-full flex-col items-center justify-center">
+        <div className="flex flex-col items-end justify-center gap-0.5">
           <div className="inline-flex gap-2">
             <SiReact size={iconSize} />
             <SiVite size={iconSize} />
             <SiElectron size={iconSize} />
           </div>
-          <span>
+          <span className="flex items-end justify-end">
             <h1 className="font-mono text-4xl font-bold">{t("appName")}</h1>
-            <p
-              className="text-muted-foreground text-end text-sm uppercase"
-              data-testid="pageTitle"
-            >
-              {t("titleHomePage")}
-            </p>
+            <p className="text-muted-foreground text-sm">v{appVersion}</p>
           </span>
-          <LangToggle />
-          <ToggleTheme />
+          <div className="flex w-full justify-between">
+            <ExternalLink
+              href="https://github.com/LuanRoger"
+              className="text-muted-foreground flex gap-2 text-sm"
+            >
+              {t("madeBy")}
+            </ExternalLink>
+            <div className="flex items-center gap-2">
+              <LangToggle />
+              <ToggleTheme />
+            </div>
+          </div>
         </div>
-        <footer className="font-tomorrow text-muted-foreground flex justify-between text-[0.7rem] uppercase">
-          <ExternalLink href="https://github.com/LuanRoger">
-            {t("madeBy")}
-          </ExternalLink>
-          <p>
-            {t("version")}: v{appVersion}
-          </p>
-        </footer>
       </div>
     </>
   );
