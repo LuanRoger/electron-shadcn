@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { createFileRoute } from "@tanstack/react-router";
 import NavigationMenu from "@/components/navigation-menu";
 
@@ -7,6 +8,8 @@ import NavigationMenu from "@/components/navigation-menu";
  */
 
 function SecondPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <NavigationMenu />
