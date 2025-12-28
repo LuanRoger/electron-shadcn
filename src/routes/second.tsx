@@ -27,14 +27,6 @@ function SecondPage() {
         <div className="flex flex-1 flex-col items-center justify-center gap-2">
           <h1 className="text-4xl font-bold">{t("titleSecondPage")}</h1>
         </div>
-        <footer className="font-tomorrow text-muted-foreground inline-flex justify-between text-[0.7rem] uppercase">
-          <ExternalLink href="https://github.com/LuanRoger">
-            {t("madeBy")}
-          </ExternalLink>
-          <p>
-            {t("version")}: v{appVersion}
-          </p>
-        </footer>
       </div>
     </>
   );
