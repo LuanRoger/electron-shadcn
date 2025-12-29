@@ -72,7 +72,7 @@
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@icons-pack/react-simple-icons": "^13.8.0",
-    "@orpc/client": "^1.10.4",
+    "@orpc/client": "^1.13.2",
     "@orpc/server": "^1.13.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-query": "^5.90.13",
