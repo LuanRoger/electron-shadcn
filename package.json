@@ -50,7 +50,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "electron": "^39.2.7",
     "electron-devtools-installer": "^4.0.0",
-    "electron-playwright-helpers": "^2.0.1",
+    "electron-playwright-helpers": "^2.1.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
