@@ -9,12 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SecondRouteImport } from './routes/second'
+import { Route as SubmitGameResultRouteImport } from './routes/submit-game-result'
+import { Route as SettingRouteImport } from './routes/setting'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as GameRoomsRouteImport } from './routes/game-rooms'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GameRoomsRoomIdRouteImport } from './routes/game-rooms/$roomId'
 
-const SecondRoute = SecondRouteImport.update({
-  id: '/second',
-  path: '/second',
+const SubmitGameResultRoute = SubmitGameResultRouteImport.update({
+  id: '/submit-game-result',
+  path: '/submit-game-result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingRoute = SettingRouteImport.update({
+  id: '/setting',
+  path: '/setting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameRoomsRoute = GameRoomsRouteImport.update({
+  id: '/game-rooms',
+  path: '/game-rooms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +53,128 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GameRoomsRoomIdRoute = GameRoomsRoomIdRouteImport.update({
+  id: '/$roomId',
+  path: '/$roomId',
+  getParentRoute: () => GameRoomsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/second': typeof SecondRoute
+  '/game-rooms': typeof GameRoomsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/setting': typeof SettingRoute
+  '/submit-game-result': typeof SubmitGameResultRoute
+  '/game-rooms/$roomId': typeof GameRoomsRoomIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/second': typeof SecondRoute
+  '/game-rooms': typeof GameRoomsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/setting': typeof SettingRoute
+  '/submit-game-result': typeof SubmitGameResultRoute
+  '/game-rooms/$roomId': typeof GameRoomsRoomIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/second': typeof SecondRoute
+  '/game-rooms': typeof GameRoomsRouteWithChildren
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/setting': typeof SettingRoute
+  '/submit-game-result': typeof SubmitGameResultRoute
+  '/game-rooms/$roomId': typeof GameRoomsRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/second'
+  fullPaths:
+    | '/'
+    | '/game-rooms'
+    | '/login'
+    | '/profile'
+    | '/register'
+    | '/setting'
+    | '/submit-game-result'
+    | '/game-rooms/$roomId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/second'
-  id: '__root__' | '/' | '/second'
+  to:
+    | '/'
+    | '/game-rooms'
+    | '/login'
+    | '/profile'
+    | '/register'
+    | '/setting'
+    | '/submit-game-result'
+    | '/game-rooms/$roomId'
+  id:
+    | '__root__'
+    | '/'
+    | '/game-rooms'
+    | '/login'
+    | '/profile'
+    | '/register'
+    | '/setting'
+    | '/submit-game-result'
+    | '/game-rooms/$roomId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SecondRoute: typeof SecondRoute
+  GameRoomsRoute: typeof GameRoomsRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
+  SettingRoute: typeof SettingRoute
+  SubmitGameResultRoute: typeof SubmitGameResultRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/second': {
-      id: '/second'
-      path: '/second'
-      fullPath: '/second'
-      preLoaderRoute: typeof SecondRouteImport
+    '/submit-game-result': {
+      id: '/submit-game-result'
+      path: '/submit-game-result'
+      fullPath: '/submit-game-result'
+      preLoaderRoute: typeof SubmitGameResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setting': {
+      id: '/setting'
+      path: '/setting'
+      fullPath: '/setting'
+      preLoaderRoute: typeof SettingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game-rooms': {
+      id: '/game-rooms'
+      path: '/game-rooms'
+      fullPath: '/game-rooms'
+      preLoaderRoute: typeof GameRoomsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +184,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/game-rooms/$roomId': {
+      id: '/game-rooms/$roomId'
+      path: '/$roomId'
+      fullPath: '/game-rooms/$roomId'
+      preLoaderRoute: typeof GameRoomsRoomIdRouteImport
+      parentRoute: typeof GameRoomsRoute
+    }
   }
 }
 
+interface GameRoomsRouteChildren {
+  GameRoomsRoomIdRoute: typeof GameRoomsRoomIdRoute
+}
+
+const GameRoomsRouteChildren: GameRoomsRouteChildren = {
+  GameRoomsRoomIdRoute: GameRoomsRoomIdRoute,
+}
+
+const GameRoomsRouteWithChildren = GameRoomsRoute._addFileChildren(
+  GameRoomsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SecondRoute: SecondRoute,
+  GameRoomsRoute: GameRoomsRouteWithChildren,
+  LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
+  SettingRoute: SettingRoute,
+  SubmitGameResultRoute: SubmitGameResultRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
