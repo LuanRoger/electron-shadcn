@@ -87,7 +87,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-i18next": "^16.5.1",
-    "shadcn": "^3.6.2",
+    "shadcn": "^3.6.3",
     "tailwind-merge": "^3.4.0",
     "update-electron-app": "^3.1.2",
     "zod": "^4.2.1"
