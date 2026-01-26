@@ -32,7 +32,7 @@
     "@electron-forge/plugin-fuses": "^7.10.2",
     "@electron-forge/plugin-vite": "^7.10.2",
     "@electron-forge/publisher-github": "^7.10.2",
-    "@electron-forge/shared-types": "^7.8.1",
+    "@electron-forge/shared-types": "^7.11.1",
     "@electron/fuses": "~1.8.0",
     "@eslint/compat": "^2.0.0",
     "@eslint/js": "^9.39.0",
