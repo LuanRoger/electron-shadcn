@@ -29,6 +29,9 @@ export const setThemeMode = os
       case "system":
         nativeTheme.themeSource = "system";
         break;
+      default:
+        nativeTheme.themeSource = "system";
+        break;
     }
 
     return nativeTheme.themeSource;

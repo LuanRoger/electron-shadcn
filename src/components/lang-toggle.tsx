@@ -1,7 +1,7 @@
-import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
-import langs from "@/localization/langs";
 import { useTranslation } from "react-i18next";
 import { setAppLanguage } from "@/actions/language";
+import langs from "@/localization/langs";
+import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
 export default function LangToggle() {
   const { i18n } = useTranslation();
@@ -13,16 +13,16 @@ export default function LangToggle() {
 
   return (
     <ToggleGroup
-      type="single"
       onValueChange={onValueChange}
+      type="single"
       value={currentLang}
     >
       {langs.map((lang) => (
         <ToggleGroupItem
           key={lang.key}
+          size="lg"
           value={lang.key}
           variant="outline"
-          size="lg"
         >
           {`${lang.prefix}`}
         </ToggleGroupItem>

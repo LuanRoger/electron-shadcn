@@ -1,6 +1,6 @@
-import { ThemeMode } from "@/types/theme-mode";
-import { ipc } from "@/ipc/manager";
 import { LOCAL_STORAGE_KEYS } from "@/constants";
+import { ipc } from "@/ipc/manager";
+import type { ThemeMode } from "@/types/theme-mode";
 
 export interface ThemePreferences {
   system: ThemeMode;
@@ -10,7 +10,7 @@ export interface ThemePreferences {
 export async function getCurrentTheme(): Promise<ThemePreferences> {
   const currentTheme = await ipc.client.theme.getCurrentThemeMode();
   const localTheme = localStorage.getItem(
-    LOCAL_STORAGE_KEYS.THEME,
+    LOCAL_STORAGE_KEYS.THEME
   ) as ThemeMode | null;
 
   return {

@@ -1,14 +1,17 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { app, BrowserWindow } from "electron";
-import path from "path";
+import { ipcMain } from "electron/main";
 import {
   installExtension,
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
-import { ipcMain } from "electron/main";
+import { UpdateSourceType, updateElectronApp } from "update-electron-app";
 import { ipcContext } from "@/ipc/context";
 import { IPC_CHANNELS } from "./constants";
-import { updateElectronApp, UpdateSourceType } from "update-electron-app";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const inDevelopment = process.env.NODE_ENV === "development";
 
 function createWindow() {
@@ -22,7 +25,7 @@ function createWindow() {
       nodeIntegration: true,
       nodeIntegrationInSubFrames: false,
 
-      preload: preload,
+      preload,
     },
     titleBarStyle: process.platform === "darwin" ? "hiddenInset" : "hidden",
     trafficLightPosition:
@@ -34,7 +37,7 @@ function createWindow() {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
+      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
 }
@@ -68,12 +71,16 @@ async function setupORPC() {
   });
 }
 
-app
-  .whenReady()
-  .then(createWindow)
-  .then(installExtensions)
-  .then(checkForUpdates)
-  .then(setupORPC);
+app.whenReady().then(async () => {
+  try {
+    createWindow();
+    await installExtensions();
+    checkForUpdates();
+    await setupORPC();
+  } catch (error) {
+    console.error("Error during app initialization:", error);
+  }
+});
 
 //osX only
 app.on("window-all-closed", () => {

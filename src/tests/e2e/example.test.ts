@@ -1,9 +1,9 @@
 import {
-  test,
-  expect,
+  type ElectronApplication,
   _electron as electron,
-  ElectronApplication,
-  Page,
+  expect,
+  type Page,
+  test,
 } from "@playwright/test";
 import { findLatestBuild, parseElectronApp } from "electron-playwright-helpers";
 
@@ -22,7 +22,7 @@ test.beforeAll(async () => {
   electronApp = await electron.launch({
     args: [appInfo.main],
   });
-  electronApp.on("window", async (page) => {
+  electronApp.on("window", (page) => {
     const filename = page.url()?.split("/").pop();
     console.log(`Window opened: ${filename}`);
 

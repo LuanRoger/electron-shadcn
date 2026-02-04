@@ -1,8 +1,8 @@
-import { ClientContext, createORPCClient } from "@orpc/client";
+import { type ClientContext, createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/message-port";
-import { router } from "./router";
-import { RouterClient } from "@orpc/server";
+import type { RouterClient } from "@orpc/server";
 import { IPC_CHANNELS } from "@/constants";
+import type { router } from "./router";
 
 type RPCClient = RouterClient<typeof router>;
 
@@ -12,9 +12,9 @@ class IPCManager {
 
   private readonly rpcLink: RPCLink<ClientContext>;
 
-  public readonly client: RPCClient;
+  private initialized = false;
 
-  private initialized: boolean = false;
+  readonly client: RPCClient;
 
   constructor() {
     const { port1: clientChannelPort, port2: serverChannelPort } =
@@ -28,7 +28,7 @@ class IPCManager {
     this.client = createORPCClient(this.rpcLink);
   }
 
-  public initialize() {
+  initialize() {
     if (this.initialized) {
       return;
     }

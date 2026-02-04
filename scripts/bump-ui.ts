@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
-import { spawn } from "child_process";
-import { readdir } from "fs/promises";
+import { spawn } from "node:child_process";
+import { readdir } from "node:fs/promises";
 
 const DEFAULT_UI_PATH = "src/components/ui";
 const DEFAULT_EXECUTOR = "npx";
@@ -11,10 +11,10 @@ async function getComponentsNames(uiPath?: string) {
   const files = await readdir(uiPath ?? DEFAULT_UI_PATH);
 
   const componentsFilesName = files.filter((fileName) =>
-    fileName.endsWith(COMPONENT_EXTENSION),
+    fileName.endsWith(COMPONENT_EXTENSION)
   );
   const rawComponentNames = componentsFilesName.map((fileName) =>
-    fileName.replace(COMPONENT_EXTENSION, ""),
+    fileName.replace(COMPONENT_EXTENSION, "")
   );
 
   return rawComponentNames;
