@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
-import { spawn } from "child_process";
-import { readdir } from "fs/promises";
+import { spawn } from "node:child_process";
+import { readdir } from "node:fs/promises";
 
 const DEFAULT_UI_PATH = "src/components/ui";
 const DEFAULT_EXECUTOR = "npx";

@@ -1,10 +1,10 @@
+import path from "node:path";
 import { app, BrowserWindow } from "electron";
 import { ipcMain } from "electron/main";
 import {
   installExtension,
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
-import path from "path";
 import { UpdateSourceType, updateElectronApp } from "update-electron-app";
 import { ipcContext } from "@/ipc/context";
 import { IPC_CHANNELS } from "./constants";
@@ -12,7 +12,7 @@ import { IPC_CHANNELS } from "./constants";
 const inDevelopment = process.env.NODE_ENV === "development";
 
 function createWindow() {
-  const preload = path.join(__dirname, "preload.js");
+  const preload = path.join(import.meta.dirname, "preload.js");
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -34,7 +34,10 @@ function createWindow() {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
+      path.join(
+        import.meta.dirname,
+        `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`
+      )
     );
   }
 }

@@ -4,7 +4,7 @@ import { openExternalLinkInputSchema } from "./schemas";
 
 export const openExternalLink = os
   .input(openExternalLinkInputSchema)
-  .handler(async ({ input }) => {
+  .handler(({ input }) => {
     const { url } = input;
     shell.openExternal(url);
   });

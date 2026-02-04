@@ -18,7 +18,11 @@ export default function App() {
   return <RouterProvider router={router} />;
 }
 
-const root = createRoot(document.getElementById("app")!);
+const container = document.getElementById("app");
+if (!container) {
+  throw new Error('Root element with id "app" not found');
+}
+const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <App />

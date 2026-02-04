@@ -12,9 +12,9 @@ class IPCManager {
 
   private readonly rpcLink: RPCLink<ClientContext>;
 
-  public readonly client: RPCClient;
-
   private initialized = false;
+
+  readonly client: RPCClient;
 
   constructor() {
     const { port1: clientChannelPort, port2: serverChannelPort } =
@@ -28,7 +28,7 @@ class IPCManager {
     this.client = createORPCClient(this.rpcLink);
   }
 
-  public initialize() {
+  initialize() {
     if (this.initialized) {
       return;
     }

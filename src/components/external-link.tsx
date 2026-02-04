@@ -2,12 +2,14 @@ import type { ComponentProps } from "react";
 import { openExternalLink } from "@/actions/shell";
 import { cn } from "@/utils/tailwind";
 
+type ExternalLinkProps = ComponentProps<"button"> & { href?: string };
+
 export default function ExternalLink({
   children,
   className,
   href,
   ...props
-}: ComponentProps<"a">) {
+}: ExternalLinkProps) {
   function open() {
     if (!href) {
       return;
@@ -17,12 +19,12 @@ export default function ExternalLink({
   }
 
   return (
-    <a
+    <button
       className={cn("cursor-pointer underline", className)}
       {...props}
       onClick={open}
     >
       {children}
-    </a>
+    </button>
   );
 }

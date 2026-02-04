@@ -22,7 +22,7 @@ test.beforeAll(async () => {
   electronApp = await electron.launch({
     args: [appInfo.main],
   });
-  electronApp.on("window", async (page) => {
+  electronApp.on("window", (page) => {
     const filename = page.url()?.split("/").pop();
     console.log(`Window opened: ${filename}`);
 
