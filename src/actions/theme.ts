@@ -3,8 +3,8 @@ import { ipc } from "@/ipc/manager";
 import type { ThemeMode } from "@/types/theme-mode";
 
 export interface ThemePreferences {
-  system: ThemeMode;
   local: ThemeMode | null;
+  system: ThemeMode;
 }
 
 export async function getCurrentTheme(): Promise<ThemePreferences> {
