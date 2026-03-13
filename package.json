@@ -21,6 +21,30 @@
   },
   "author": "ROG <luanroger.dev@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
+    "@icons-pack/react-simple-icons": "^13.12.0",
+    "@orpc/client": "^1.13.7",
+    "@orpc/server": "^1.13.7",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-router": "^1.166.7",
+    "@tanstack/react-router-devtools": "^1.166.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "electron-squirrel-startup": "^1.0.1",
+    "i18next": "^25.8.18",
+    "lucide-react": "^0.577.0",
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-i18next": "^16.5.8",
+    "shadcn": "^4.0.6",
+    "tailwind-merge": "^3.5.0",
+    "update-electron-app": "^3.1.2",
+    "zod": "^4.3.6"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.4.6",
     "@electron-forge/cli": "^7.11.1",
@@ -33,7 +57,7 @@
     "@electron-forge/plugin-vite": "^7.11.1",
     "@electron-forge/publisher-github": "^7.11.1",
     "@electron-forge/shared-types": "^7.11.1",
-    "@electron/fuses": "~1.8.0",
+    "@electron/fuses": "^2.1.0",
     "@playwright/test": "^1.58.2",
     "@tanstack/router-plugin": "^1.166.7",
     "@testing-library/jest-dom": "^6.9.1",
@@ -58,28 +82,9 @@
     "vite": "^7.3.1",
     "vitest": "^4.1.0"
   },
-  "dependencies": {
-    "@fontsource-variable/geist": "^5.2.8",
-    "@fontsource-variable/geist-mono": "^5.2.7",
-    "@icons-pack/react-simple-icons": "^13.12.0",
-    "@orpc/client": "^1.13.7",
-    "@orpc/server": "^1.13.7",
-    "@tailwindcss/vite": "^4.2.1",
-    "@tanstack/react-query": "^5.90.21",
-    "@tanstack/react-router": "^1.166.7",
-    "@tanstack/react-router-devtools": "^1.166.7",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "electron-squirrel-startup": "^1.0.1",
-    "i18next": "^25.8.18",
-    "lucide-react": "^0.577.0",
-    "radix-ui": "^1.4.3",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-i18next": "^16.5.8",
-    "shadcn": "^4.0.6",
-    "tailwind-merge": "^3.5.0",
-    "update-electron-app": "^3.1.2",
-    "zod": "^4.3.6"
+  "overrides": {
+    "@electron-forge/plugin-fuses": {
+      "@electron/fuses": "^2"
+    }
   }
 }
