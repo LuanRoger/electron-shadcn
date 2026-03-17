@@ -10,12 +10,16 @@ import { UpdateSourceType, updateElectronApp } from "update-electron-app";
 import { ipcContext } from "@/ipc/context";
 import { IPC_CHANNELS } from "./constants";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const basePath =
+  typeof import.meta !== "undefined" && import.meta.url
+    ? path.dirname(fileURLToPath(import.meta.url))
+    : typeof __dirname !== "undefined"
+      ? __dirname
+      : process.cwd();
 const inDevelopment = process.env.NODE_ENV === "development";
 
 function createWindow() {
-  const preload = path.join(__dirname, "preload.js");
+  const preload = path.join(basePath, "preload.js");
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -37,7 +41,7 @@ function createWindow() {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
+      path.join(basePath, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
 }
