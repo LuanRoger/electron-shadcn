@@ -1,5 +1,4 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { app, BrowserWindow } from "electron";
 import { ipcMain } from "electron/main";
 import {
@@ -8,17 +7,11 @@ import {
 } from "electron-devtools-installer";
 import { UpdateSourceType, updateElectronApp } from "update-electron-app";
 import { ipcContext } from "@/ipc/context";
-import { IPC_CHANNELS } from "./constants";
-
-const basePath =
-  typeof import.meta !== "undefined" && import.meta.url
-    ? path.dirname(fileURLToPath(import.meta.url))
-    : typeof __dirname !== "undefined"
-      ? __dirname
-      : process.cwd();
-const inDevelopment = process.env.NODE_ENV === "development";
+import { IPC_CHANNELS, inDevelopment } from "./constants";
+import { getBasePath } from "./utils/path";
 
 function createWindow() {
+  const basePath = getBasePath();
   const preload = path.join(basePath, "preload.js");
   const mainWindow = new BrowserWindow({
     width: 800,
