@@ -27,7 +27,7 @@
     "@icons-pack/react-simple-icons": "^13.12.0",
     "@orpc/client": "^1.13.7",
     "@orpc/server": "^1.13.7",
-    "@tailwindcss/vite": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-router": "^1.166.7",
     "@tanstack/react-router-devtools": "^1.166.7",
@@ -87,9 +87,6 @@
   "overrides": {
     "@electron-forge/plugin-fuses": {
       "@electron/fuses": "^2"
-    },
-    "@tailwindcss/vite": {
-      "vite": "^8"
     }
   }
 }
