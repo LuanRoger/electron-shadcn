@@ -8,7 +8,6 @@ declare module "@tanstack/react-router" {
 }
 
 export const router = createRouter({
-  defaultPendingMinMs: 0,
   routeTree,
   history: createMemoryHistory({
     initialEntries: ["/"],
