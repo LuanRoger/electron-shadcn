@@ -9,6 +9,15 @@ import { UpdateSourceType, updateElectronApp } from "update-electron-app";
 import { ipcContext } from "@/ipc/context";
 import { IPC_CHANNELS, inDevelopment } from "./constants";
 import { getBasePath } from "./utils/path";
+import { initializeLogger, initializeErrorHandling, Logger } from "./main/logger";
+import { installCrashHandlers, wireRenderProcessGone } from "./main/crash-report";
+import { initializeTray } from "./main/tray";
+import { registerKeyboardShortcuts } from "./main/keyboard";
+import { setupContextMenu } from "./main/context-menu";
+import { store } from "./main/store";
+
+// Initialize logger first so all subsequent logs go to file
+initializeLogger();
 
 function createWindow() {
   const basePath = getBasePath();
@@ -30,6 +39,12 @@ function createWindow() {
   });
   ipcContext.setMainWindow(mainWindow);
 
+  // Set up context menu (cut/copy/paste + inspect element in dev)
+  setupContextMenu(mainWindow);
+
+  // Wire crash handler for render process
+  wireRenderProcessGone(mainWindow);
+
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
@@ -37,18 +52,26 @@ function createWindow() {
       path.join(basePath, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
+
+  return mainWindow;
 }
 
 async function installExtensions() {
   try {
     const result = await installExtension(REACT_DEVELOPER_TOOLS);
-    console.log(`Extensions installed successfully: ${result.name}`);
+    Logger.info(`Extensions installed successfully: ${result.name}`);
   } catch {
-    console.error("Failed to install extensions");
+    Logger.error("Failed to install extensions");
   }
 }
 
 function checkForUpdates() {
+  const settings = store.get("settings");
+  if (!settings.allowAutoUpdate) {
+    Logger.info("Auto-update disabled by user settings");
+    return;
+  }
+
   updateElectronApp({
     updateSource: {
       type: UpdateSourceType.ElectronPublicUpdateService,
@@ -70,18 +93,36 @@ async function setupORPC() {
 
 app.whenReady().then(async () => {
   try {
+    // Install crash handlers early
+    installCrashHandlers();
+    initializeErrorHandling();
+
+    Logger.info("App starting...");
+
     createWindow();
     await installExtensions();
     checkForUpdates();
     await setupORPC();
+
+    // Initialize tray if enabled in settings
+    const settings = store.get("settings");
+    if (settings.showTrayIcon) {
+      initializeTray();
+    }
+
+    // Register global keyboard shortcuts
+    registerKeyboardShortcuts();
+
+    Logger.info("App ready");
   } catch (error) {
-    console.error("Error during app initialization:", error);
+    Logger.error("Error during app initialization:", error);
   }
 });
 
 //osX only
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+  const settings = store.get("settings");
+  if (process.platform !== "darwin" || settings.quitOnWindowClose) {
     app.quit();
   }
 });
@@ -92,3 +133,9 @@ app.on("activate", () => {
   }
 });
 //osX only ends
+
+// Clean up global shortcuts on quit
+app.on("will-quit", () => {
+  const { globalShortcut } = require("electron");
+  globalShortcut.unregisterAll();
+});
