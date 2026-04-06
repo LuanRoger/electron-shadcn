@@ -40,7 +40,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-i18next": "^16.6.2",
-    "shadcn": "^4.1.0",
+    "shadcn": "^4.1.2",
     "tailwind-merge": "^3.5.0",
     "update-electron-app": "^3.1.2",
     "zod": "^4.3.6"
