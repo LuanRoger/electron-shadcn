@@ -1,15 +1,14 @@
-import type { ForgeConfig } from "@electron-forge/shared-types";
-import { MakerSquirrel } from "@electron-forge/maker-squirrel";
-import { MakerZIP } from "@electron-forge/maker-zip";
+import { FuseV1Options, FuseVersion } from "@electron/fuses";
 import { MakerDeb } from "@electron-forge/maker-deb";
 import { MakerRpm } from "@electron-forge/maker-rpm";
-import { VitePlugin } from "@electron-forge/plugin-vite";
+import { MakerSquirrel } from "@electron-forge/maker-squirrel";
+import { MakerZIP } from "@electron-forge/maker-zip";
 import { FusesPlugin } from "@electron-forge/plugin-fuses";
-import { FuseV1Options, FuseVersion } from "@electron/fuses";
+import { VitePlugin } from "@electron-forge/plugin-vite";
+import type { ForgeConfig } from "@electron-forge/shared-types";
 
 const config: ForgeConfig = {
   packagerConfig: {
-    executableName: "electron-shadcn",
     asar: true,
   },
   rebuildConfig: {},
@@ -19,30 +18,45 @@ const config: ForgeConfig = {
     new MakerRpm({}),
     new MakerDeb({}),
   ],
+  publishers: [
+    {
+      /*
+       * Publish release on GitHub as draft.
+       * Remember to manually publish it on GitHub website after verifying everything is correct.
+       */
+      name: "@electron-forge/publisher-github",
+      config: {
+        repository: {
+          owner: "LuanRoger",
+          name: "electron-shadcn",
+        },
+        draft: true,
+        prerelease: false,
+      },
+    },
+  ],
   plugins: [
     new VitePlugin({
-      // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
-      // If you are familiar with Vite configuration, it will look really familiar.
       build: [
         {
-          // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
           entry: "src/main.ts",
-          config: "vite.main.config.ts",
+          config: "vite.main.config.mts",
+          target: "main",
         },
         {
           entry: "src/preload.ts",
-          config: "vite.preload.config.ts",
+          config: "vite.preload.config.mts",
+          target: "preload",
         },
       ],
       renderer: [
         {
           name: "main_window",
-          config: "vite.renderer.config.ts",
+          config: "vite.renderer.config.mts",
         },
       ],
     }),
-    // Fuses are used to enable/disable various Electron functionality
-    // at package time, before code signing the application
+
     new FusesPlugin({
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: false,

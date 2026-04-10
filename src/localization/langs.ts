@@ -1,14 +1,14 @@
-import { Language } from "./language";
+import type { Language } from "./language";
 
 export default [
   {
     key: "en",
     nativeName: "English",
-    prefix: "🇺🇸",
+    prefix: "EN-US",
   },
   {
     key: "pt-BR",
     nativeName: "Português (Brasil)",
-    prefix: "🇧🇷",
+    prefix: "PT-BR",
   },
-] satisfies Language[];
+] as const satisfies Language[];

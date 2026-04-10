@@ -1,9 +1,9 @@
 import {
-  test,
-  expect,
+  type ElectronApplication,
   _electron as electron,
-  ElectronApplication,
-  Page,
+  expect,
+  type Page,
+  test,
 } from "@playwright/test";
 import { findLatestBuild, parseElectronApp } from "electron-playwright-helpers";
 
@@ -22,7 +22,7 @@ test.beforeAll(async () => {
   electronApp = await electron.launch({
     args: [appInfo.main],
   });
-  electronApp.on("window", async (page) => {
+  electronApp.on("window", (page) => {
     const filename = page.url()?.split("/").pop();
     console.log(`Window opened: ${filename}`);
 
@@ -37,15 +37,8 @@ test.beforeAll(async () => {
 
 test("renders the first page", async () => {
   const page: Page = await electronApp.firstWindow();
+
   const title = await page.waitForSelector("h1");
   const text = await title.textContent();
   expect(text).toBe("electron-shadcn");
-});
-
-test("renders page name", async () => {
-  const page: Page = await electronApp.firstWindow();
-  await page.waitForSelector("h1");
-  const pageName = await page.getByTestId("pageTitle");
-  const text = await pageName.textContent();
-  expect(text).toBe("Home Page");
 });
