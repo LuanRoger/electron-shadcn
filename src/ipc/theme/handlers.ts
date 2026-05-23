@@ -2,9 +2,7 @@ import { os } from "@orpc/server";
 import { nativeTheme } from "electron";
 import { setThemeModeInputSchema } from "./schemas";
 
-export const getCurrentThemeMode = os.handler(() => {
-  return nativeTheme.themeSource;
-});
+export const getCurrentThemeMode = os.handler(() => nativeTheme.themeSource);
 
 export const toggleThemeMode = os.handler(() => {
   if (nativeTheme.shouldUseDarkColors) {
