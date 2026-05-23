@@ -14,7 +14,6 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "strict": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -22,5 +21,11 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "./package.json", "./forge.config.ts", "*.mts"]
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "./package.json",
+    "./forge.config.ts",
+    "*.mts"
+  ]
 }
