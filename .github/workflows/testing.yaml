@@ -31,7 +31,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Create Executable
-        run: npm run make
+        run: npm run package
       - name: Run Playwright tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v4
