@@ -28,6 +28,10 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
+      - name: Install Electron binary
+        run: node node_modules/electron/install.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Create Executable
