@@ -20,7 +20,7 @@ jobs:
 
   test-e2e:
     timeout-minutes: 10
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -37,7 +37,7 @@ jobs:
       - name: Create Executable
         run: npm run package
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: always()
         with:
