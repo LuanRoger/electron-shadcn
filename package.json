@@ -59,7 +59,7 @@
     "@electron-forge/publisher-github": "^7.11.2",
     "@electron-forge/shared-types": "^7.11.2",
     "@electron/fuses": "^2.1.2",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.61.0",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tanstack/router-plugin": "^1.168.18",
     "@testing-library/jest-dom": "^6.9.1",
