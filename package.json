@@ -83,7 +83,7 @@
     "typescript": "^6.0.3",
     "ultracite": "^7.8.2",
     "vite": "^8.0.16",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   },
   "overrides": {
     "@electron-forge/plugin-fuses": {
