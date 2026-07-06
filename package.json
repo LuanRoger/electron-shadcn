@@ -75,7 +75,7 @@
     "electron": "^42.3.3",
     "electron-devtools-installer": "^4.0.0",
     "electron-playwright-helpers": "^2.1.0",
-    "globals": "^17.6.0",
+    "globals": "^17.7.0",
     "jsdom": "^29.1.1",
     "tailwindcss": "^4.3.0",
     "tsx": "^4.22.4",
