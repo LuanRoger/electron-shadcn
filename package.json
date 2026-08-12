@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
-    "@biomejs/biome": "^2.5.3",
+    "@biomejs/biome": "^2.5.7",
     "@electron-forge/cli": "^7.11.2",
     "@electron-forge/maker-deb": "^7.11.2",
     "@electron-forge/maker-rpm": "^7.11.2",
