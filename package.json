@@ -64,7 +64,7 @@
     "@tanstack/router-plugin": "^1.168.19",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
+    "@testing-library/user-event": "^14.6.4",
     "@types/babel__core": "^7.20.5",
     "@types/electron-squirrel-startup": "^1.0.2",
     "@types/node": "^26.1.0",
