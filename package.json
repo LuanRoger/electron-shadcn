@@ -62,7 +62,7 @@
     "@playwright/test": "^1.61.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tanstack/router-plugin": "^1.168.19",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.4",
     "@types/babel__core": "^7.20.5",
