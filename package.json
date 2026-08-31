@@ -24,7 +24,7 @@
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",
     "@fontsource-variable/geist-mono": "^5.2.8",
-    "@icons-pack/react-simple-icons": "^13.13.0",
+    "@icons-pack/react-simple-icons": "^13.15.1",
     "@orpc/client": "^1.14.8",
     "@orpc/server": "^1.14.13",
     "@tailwindcss/vite": "^4.3.2",
