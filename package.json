@@ -1,26 +1,30 @@
 {
   "name": "electron-shadcn",
-  "productName": "electron-shadcn",
   "version": "1.4.1",
-  "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
-  "main": ".vite/build/main.js",
   "private": true,
+  "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
+  "license": "MIT",
+  "author": "ROG <luanroger.dev@gmail.com>",
+  "main": ".vite/build/main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
+    "bump-ui": "tsx ./scripts/bump-ui.ts",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "bump-ui": "tsx ./scripts/bump-ui.ts",
+    "make": "electron-forge make",
+    "package": "electron-forge package",
+    "publish": "electron-forge publish",
+    "start": "electron-forge start",
     "test": "vitest run",
-    "test:watch": "vitest watch",
-    "test:unit": "vitest",
+    "test:all": "vitest run && playwright test",
     "test:e2e": "playwright test",
-    "test:all": "vitest run && playwright test"
+    "test:unit": "vitest",
+    "test:watch": "vitest watch"
   },
-  "author": "ROG <luanroger.dev@gmail.com>",
-  "license": "MIT",
+  "overrides": {
+    "@electron-forge/plugin-fuses": {
+      "@electron/fuses": "^2"
+    }
+  },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
@@ -84,9 +88,5 @@
     "vite": "^8.3.0",
     "vitest": "^5.0.1"
   },
-  "overrides": {
-    "@electron-forge/plugin-fuses": {
-      "@electron/fuses": "^2"
-    }
-  }
+  "productName": "electron-shadcn"
 }
