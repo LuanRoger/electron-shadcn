@@ -86,7 +86,7 @@
     "typescript": "^6.0.3",
     "ultracite": "^7.12.0",
     "vite": "^8.3.2",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.5"
   },
   "productName": "electron-shadcn"
 }
