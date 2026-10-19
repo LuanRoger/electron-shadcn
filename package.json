@@ -41,7 +41,7 @@
     "i18next": "^26.4.2",
     "lucide-react": "^1.47.0",
     "radix-ui": "^1.6.7",
-    "react": "^19.3.0",
+    "react": "^19.3.1",
     "react-dom": "^19.3.0",
     "react-i18next": "^17.0.15",
     "shadcn": "^4.21.0",
