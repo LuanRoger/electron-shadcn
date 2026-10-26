@@ -47,7 +47,7 @@
     "shadcn": "^4.21.0",
     "tailwind-merge": "^3.7.0",
     "update-electron-app": "^3.3.0",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@babel/core": "^8.0.6",
