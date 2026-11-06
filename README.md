@@ -10,37 +10,36 @@ To develop a Electron app, you probably will need some UI, test, formatter, styl
 
 ### Core 🏍️
 
-- [Electron 43](https://www.electronjs.org)
-- [Vite 8](https://vitejs.dev)
+- [Electron 45](https://www.electronjs.org)
+- [Vite 8.3](https://vitejs.dev)
 
 ### DX 🛠️
 
 - [TypeScript 6](https://www.typescriptlang.org)
-- [oRPC](https://orpc.unnoq.com)
-- [Prettier](https://prettier.io)
-- [Ultracite with Biome](https://www.ultracite.ai/providers/biome)
+- [oRPC 1.16](https://orpc.unnoq.com)
+- [Ultracite 8 with Biome](https://www.ultracite.ai/providers/biome)
 - [Zod 4](https://zod.dev)
-- [React Query (TanStack)](https://react-query.tanstack.com)
+- [TanStack Query 5.106](https://tanstack.com/query)
 
 ### UI 🎨
 
-- [React 19.2](https://reactjs.org)
+- [React 19.3](https://react.dev)
 - [Tailwind 4.3](https://tailwindcss.com)
 - [Shadcn UI](https://ui.shadcn.com)
 - [Geist](https://vercel.com/font) as default font
 - [i18next](https://www.i18next.com)
-- [TanStack Router](https://tanstack.com/router) (with file based routing)
+- [TanStack Router 1.170](https://tanstack.com/router) (with file based routing)
 - [Lucide](https://lucide.dev)
 
 ### Test 🧪
 
-- [Vitest](https://vitest.dev)
-- [Playwright](https://playwright.dev)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Vitest 5.1](https://vitest.dev)
+- [Playwright 1.65](https://playwright.dev)
+- [React Testing Library 16.3](https://testing-library.com/docs/react-testing-library/intro)
 
 ### Packing and distribution 📦
 
-- [Electron Forge](https://www.electronforge.io)
+- [Electron Forge 8.0](https://www.electronforge.io)
 
 ### CI/CD 🚀
 
