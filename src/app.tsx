@@ -18,7 +18,7 @@ export default function App() {
   return <RouterProvider router={router} />;
 }
 
-const container = document.getElementById("app");
+const container = document.querySelector("#app");
 if (!container) {
   throw new Error('Root element with id "app" not found');
 }

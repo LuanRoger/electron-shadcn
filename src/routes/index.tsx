@@ -36,12 +36,12 @@ function HomePage() {
             <SiElectron size={iconSize} />
           </div>
           <span className="flex items-end justify-end">
-            <h1 className="font-bold font-mono text-4xl">{t("appName")}</h1>
+            <h1 className="font-mono text-4xl font-bold">{t("appName")}</h1>
             <p className="text-muted-foreground text-sm">v{appVersion}</p>
           </span>
           <div className="flex w-full justify-between">
             <ExternalLink
-              className="flex gap-2 text-muted-foreground text-sm"
+              className="text-muted-foreground flex gap-2 text-sm"
               href="https://github.com/LuanRoger"
             >
               {t("madeBy")}
