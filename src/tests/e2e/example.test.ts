@@ -22,6 +22,7 @@ test.beforeAll(async () => {
   electronApp = await electron.launch({
     args: [appInfo.main],
   });
+
   electronApp.on("window", (page) => {
     const filename = page.url()?.split("/").pop();
     console.log(`Window opened: ${filename}`);
@@ -41,4 +42,7 @@ test("renders the first page", async () => {
   const title = await page.waitForSelector("h1");
   const text = await title.textContent();
   expect(text).toBe("electron-shadcn");
+
+  const version = await electronApp.evaluate(({ app }) => app.getVersion());
+  await expect(page.getByText(`v${version}`, { exact: true })).toBeVisible();
 });

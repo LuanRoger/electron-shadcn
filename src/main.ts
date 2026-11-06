@@ -12,7 +12,7 @@ import { getBasePath } from "./utils/path";
 
 function createWindow() {
   const basePath = getBasePath();
-  const preload = path.join(basePath, "preload.js");
+  const preload = path.join(basePath, "preload.cjs");
   const mainWindow = new BrowserWindow({
     height: 600,
     titleBarStyle: process.platform === "darwin" ? "hiddenInset" : "hidden",
