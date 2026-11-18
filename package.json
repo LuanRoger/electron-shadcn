@@ -18,7 +18,8 @@
     "test:all": "vitest run && playwright test",
     "test:e2e": "playwright test",
     "test:unit": "vitest",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "typecheck": "tsc --noEmit"
   },
   "overrides": {
     "@electron-forge/plugin-fuses": {

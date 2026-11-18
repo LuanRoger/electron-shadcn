@@ -3,7 +3,10 @@
     "jsx": "react-jsx",
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["dom", "ESNext"],
+    "lib": [
+      "dom",
+      "ESNext"
+    ],
     "experimentalDecorators": true,
     "composite": true,
     "declaration": true,
@@ -14,8 +17,11 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "strict": true,
+    "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "outDir": "dist",
     "moduleResolution": "bundler",
