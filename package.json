@@ -1,6 +1,6 @@
 {
   "name": "electron-shadcn",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
   "license": "MIT",
