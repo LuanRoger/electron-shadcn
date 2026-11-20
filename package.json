@@ -1,6 +1,6 @@
 {
   "name": "electron-shadcn",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "description": "Electron Forge with shadcn-ui (Vite + Typescript)",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "@tanstack/react-router-devtools": "^1.167.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cn": "^0.5.2",
     "electron-squirrel-startup": "^1.0.1",
     "i18next": "^27.1.5",
     "lucide-react": "^1.75.0",
